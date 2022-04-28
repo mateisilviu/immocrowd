@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "668255069444",
+    "project_id": "immocrowd-49e21",
+    "storage_bucket": "immocrowd-49e21.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668255069444:android:ec2b2bee454e3d2f15dc51",
+        "android_client_info": {
+          "package_name": "com.example.immocrowd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "668255069444-c7oolgpi3uad8jh5adtul45e8bp14tfl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIMeYtJAAaWK9zREKDrP91Itawwp2T8NI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "668255069444-c7oolgpi3uad8jh5adtul45e8bp14tfl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
