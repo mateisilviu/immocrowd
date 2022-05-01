@@ -60,7 +60,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '668255069444',
     projectId: 'immocrowd-49e21',
     storageBucket: 'immocrowd-49e21.appspot.com',
-    iosClientId: '668255069444-buvi3bvjj3pmuf3nulss3i128qe269kq.apps.googleusercontent.com',
+    iosClientId:
+        '668255069444-buvi3bvjj3pmuf3nulss3i128qe269kq.apps.googleusercontent.com',
     iosBundleId: 'com.example.immocrowd',
   );
 }
