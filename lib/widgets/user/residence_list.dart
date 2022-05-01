@@ -54,6 +54,25 @@ class ResidenceList extends StatelessWidget {
                               offset: Offset(4, 4)),
                         ],
                       ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 60, left: 20),
+                      padding: EdgeInsets.all(5),
+                      child: Text(
+                        '29 days',
+                        style: TextStyle(fontSize: 18, color: Colors.white),
+                      ),
+                      decoration: new BoxDecoration(
+                        borderRadius: new BorderRadius.circular(10.0),
+                        color: Colors.green,
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 5,
+                              spreadRadius: 1,
+                              offset: Offset(4, 4)),
+                        ],
+                      ),
                     )
                   ],
                 ),
