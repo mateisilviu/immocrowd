@@ -1,14 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:json_theme/json_theme.dart';
+
+import 'dart:convert';
 
 import './widgets/admin/insert_residence.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final themeStr =
+      await rootBundle.loadString('assets/theme/appainter_theme.json');
+  final themeJson = jsonDecode(themeStr);
+  final theme = ThemeDecoder.decodeThemeData(themeJson)!;
+
+  runApp(MyApp(theme: theme));
+}
 
 class MyApp extends StatelessWidget {
+  final ThemeData theme;
+
+  const MyApp({Key? key, required this.theme}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter App',
+      title: 'Immo Equity Fund',
+      theme: theme,
       home: MyHomePage(),
     );
   }
@@ -19,7 +37,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter App'),
+        title: Text('Immo Equity Fund'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.account_box_rounded),
