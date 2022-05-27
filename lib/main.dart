@@ -20,6 +20,16 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Flutter App'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.account_box_rounded),
+            onPressed: () => {},
+          ),
+          IconButton(
+            icon: Icon(Icons.details),
+            onPressed: () => {},
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(

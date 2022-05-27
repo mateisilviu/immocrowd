@@ -11,17 +11,23 @@ class ResidenceList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 800,
-      child: ListView.builder(
+      height: double.maxFinite,
+      child: GridView.builder(
+        itemCount: availableResidences.length,
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 700,
+            childAspectRatio: 3 / 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 20),
         itemBuilder: (ctx, index) {
           return Card(
-            child: Row(
+            child: Column(
               children: <Widget>[
                 Stack(
                   children: <Widget>[
                     Container(
-                      height: 300,
-                      width: 300,
+                      height: 400,
+                      width: 400,
                       margin: EdgeInsets.symmetric(
                         vertical: 10,
                         horizontal: 15,
@@ -76,8 +82,8 @@ class ResidenceList extends StatelessWidget {
                     )
                   ],
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       availableResidences[index].name,
@@ -86,6 +92,11 @@ class ResidenceList extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
                     Text(
                       availableResidences[index].shortDescription,
                       style: TextStyle(
@@ -93,12 +104,11 @@ class ResidenceList extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
+                )
               ],
             ),
           );
         },
-        itemCount: availableResidences.length,
       ),
     );
   }
