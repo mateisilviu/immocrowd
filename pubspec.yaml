@@ -40,6 +40,9 @@ dependencies:
   google_sign_in: ^5.3.0
   intl: ^0.17.0
   json_theme: ^3.3.1
+  provider: ^6.0.3
+  http: ^0.13.4
+  alice: ^0.2.5
 
 dev_dependencies:
   flutter_test:

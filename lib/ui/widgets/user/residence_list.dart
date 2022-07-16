@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../models/residence.dart';
+import '../../../core/models/residence.dart';
 
 class ResidenceList extends StatelessWidget {
   final List<Residence> availableResidences;

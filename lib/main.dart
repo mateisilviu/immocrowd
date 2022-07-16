@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:immocrowd/core/providers/residence-provider.dart';
+import 'package:provider/provider.dart';
 import 'package:json_theme/json_theme.dart';
 
 import 'dart:convert';
 
-import './widgets/admin/insert_residence.dart';
+import 'ui/screens/manage_properties.dart';
+import 'ui/widgets/admin/insert_residence.dart';
+
+//import './widgets/admin/insert_residence.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,11 +29,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Immo Equity Fund',
-      theme: theme,
-      home: MyHomePage(),
-    );
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider<ResidenceProvider>(
+            create: (_) => ResidenceProvider(),
+          )
+        ],
+        child: MaterialApp(
+            title: 'MyShop',
+            theme: ThemeData(
+              primarySwatch: Colors.purple,
+              //: : Colors.deepOrange,
+            ),
+            home: ManagePropertiesScreen()));
   }
 }
 
@@ -37,7 +50,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Immo Equity Fund'),
+        title: Text('IMMO Equity Fund'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.account_box_rounded),

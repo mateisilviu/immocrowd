@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/models/residence.dart';
 import './new_residence.dart';
 import '../user/residence_list.dart';
-import '../../models/residence.dart';
 
 class InsertResidence extends StatefulWidget {
   @override
@@ -11,14 +11,14 @@ class InsertResidence extends StatefulWidget {
 
 class _InsertResidenceState extends State<InsertResidence> {
   final List<Residence> _availableResidence = [
-    Apartment(
-        id: 1,
+    Residence(
+        id: "1",
         name: '1-Bedroom in Dream Towers, Dubai Marina',
         address: 'Dream Tower 1, Sheikh Zayed Rd - Dubai Marina - Dubai',
         photo: '1.jpeg',
         shortDescription: 'About Dream Towers'),
-    Apartment(
-        id: 2,
+    Residence(
+        id: "2",
         name: 'Burj Khalifa View 1-Bed in Downtown Dubai',
         address: 'Dream Tower 1, Sheikh Zayed Rd - Dubai Marina - Dubai',
         photo: '2.jpeg',
@@ -27,8 +27,8 @@ class _InsertResidenceState extends State<InsertResidence> {
 
   void _addNewApartment(
       String name, String address, String photo, String shortDescription) {
-    final newAp = Apartment(
-        id: 5,
+    final newAp = Residence(
+        id: "5",
         name: name,
         address: address,
         photo: photo,
