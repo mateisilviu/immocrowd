@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:immocrowd/ui/screens/manage_properties.dart';
 
+import 'profile.dart';
+
 class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,14 @@ class AppDrawer extends StatelessWidget {
         onTap: () {
           Navigator.of(context)
               .pushReplacementNamed(ManagePropertiesScreen.routeName);
+        },
+      ),
+      const Divider(),
+      ListTile(
+        leading: const Icon(Icons.person),
+        title: const Text('Profile'),
+        onTap: () {
+          Navigator.of(context).pushReplacementNamed(ProfilePage.routeName);
         },
       )
     ]));

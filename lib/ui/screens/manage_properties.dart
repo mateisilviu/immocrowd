@@ -26,6 +26,16 @@ class _ManagePropertiesScreenState extends State<ManagePropertiesScreen> {
   var newResidence =
       Residence(id: '', address: '', name: '', photo: '', shortDescription: '');
 
+  // Future<void> selectFiles() async {
+  //   FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+  //   if (result != null) {
+  //     File file = File(result.files.single.path);
+  //   } else {
+  //     // User canceled the picker
+  //   }
+  // }
+
   Future<void> _saveForm() async {
     final isValid = _form.currentState?.validate();
     if (isValid == null || !isValid) {

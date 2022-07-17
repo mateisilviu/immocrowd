@@ -42,7 +42,8 @@ dependencies:
   json_theme: ^3.3.1
   provider: ^6.0.3
   http: ^0.13.4
-  alice: ^0.2.5
+  file_picker: ^4.6.1
+  flutter_facebook_auth: ^4.4.0+1
 
 dev_dependencies:
   flutter_test:

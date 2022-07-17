@@ -4,7 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import 'auth.dart';
+import '../../../core/util/showSnackbar.dart';
+
+//import '../../../auth.dart';
 
 /// Displayed as a profile image if the user doesn't have one.
 const placeholderImage =
@@ -14,6 +16,8 @@ const placeholderImage =
 class ProfilePage extends StatefulWidget {
   // ignore: public_member_api_docs
   const ProfilePage({Key? key}) : super(key: key);
+
+  static String routeName = '/profile';
 
   @override
   // ignore: library_private_types_in_public_api
@@ -32,6 +36,9 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     user = FirebaseAuth.instance.currentUser!;
+    if (user == null) {
+      Navigator.of(context).pushReplacementNamed("/");
+    }
     controller = TextEditingController(text: user.displayName);
 
     controller.addListener(_onNameChanged);
@@ -83,7 +90,8 @@ class _ProfilePageState extends State<ProfilePage> {
     });
 
     // ignore: use_build_context_synchronously
-    ScaffoldSnackbar.of(context).show('Name updated');
+    // ScaffoldSnackbar.of(context).show('Name updated');
+    showSnackBar(context, 'Name updated');
   }
 
   @override
@@ -241,6 +249,7 @@ class _ProfilePageState extends State<ProfilePage> {
   /// Example code for sign out.
   Future<void> _signOut() async {
     await FirebaseAuth.instance.signOut();
-    await GoogleSignIn().signOut();
+    //await GoogleSignIn().signOut();
+    Navigator.of(context).pushReplacementNamed("/");
   }
 }

@@ -10,41 +10,91 @@ class PropertyItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final residence = Provider.of<Residence>(context, listen: false);
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: GridTile(
-        child: GestureDetector(
-          onTap: () {
-            Navigator.of(context).pushNamed(
-              PropertyDetailScreen.routeName,
-              arguments: residence.id,
-            );
-          },
-          child: Image.network(
-            residence.photo,
-            fit: BoxFit.cover,
+    return Card(
+      child: Column(
+        children: <Widget>[
+          Stack(
+            children: <Widget>[
+              Container(
+                height: 400,
+                width: 400,
+                margin: EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 15,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: new BorderRadius.circular(10.0),
+                  image: DecorationImage(
+                    image: NetworkImage(residence.photo),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                padding: EdgeInsets.all(10),
+              ),
+              Container(
+                margin: EdgeInsets.all(20),
+                padding: EdgeInsets.all(5),
+                child: Text(
+                  'Live',
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                ),
+                decoration: new BoxDecoration(
+                  borderRadius: new BorderRadius.circular(10.0),
+                  color: Colors.green,
+                  boxShadow: const [
+                    BoxShadow(
+                        color: Colors.grey,
+                        blurRadius: 5,
+                        spreadRadius: 1,
+                        offset: Offset(4, 4)),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 60, left: 20),
+                padding: EdgeInsets.all(5),
+                child: Text(
+                  '29 days',
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
+                decoration: new BoxDecoration(
+                  borderRadius: new BorderRadius.circular(10.0),
+                  color: Colors.green,
+                  boxShadow: const [
+                    BoxShadow(
+                        color: Colors.grey,
+                        blurRadius: 5,
+                        spreadRadius: 1,
+                        offset: Offset(4, 4)),
+                  ],
+                ),
+              )
+            ],
           ),
-        ),
-        footer: GridTileBar(
-          backgroundColor: Colors.black87,
-          leading: Consumer<Residence>(
-            builder: (ctx, product, _) => IconButton(
-              icon: Icon(Icons.favorite),
-              onPressed: () {},
-            ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                residence.name,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
           ),
-          title: Text(
-            residence.name,
-            textAlign: TextAlign.center,
-          ),
-          trailing: IconButton(
-            icon: Icon(
-              Icons.shopping_cart,
-            ),
-            onPressed: () {},
-            color: Theme.of(context).accentColor,
-          ),
-        ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                residence.shortDescription,
+                style: TextStyle(
+                  color: Colors.grey,
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }

@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'auth.dart';
-import 'profile.dart';
+import 'ui/widgets/user/profile.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
