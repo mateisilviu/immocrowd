@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:immocrowd/core/models/residence.dart';
+import 'package:immocrowd/ui/widgets/user/app_drawer.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/providers/residence-provider.dart';
@@ -68,6 +69,7 @@ class _ManagePropertiesScreenState extends State<ManagePropertiesScreen> {
       appBar: AppBar(
           title: const Text('Manage Properties'),
           actions: [IconButton(onPressed: _saveForm, icon: Icon(Icons.save))]),
+      drawer: AppDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(

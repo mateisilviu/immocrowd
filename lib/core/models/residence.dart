@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:convert' as convert;
 
-class Residence {
+class Residence with ChangeNotifier {
   static const DB_Table = 'residences.json';
 
-  const Residence({
+  Residence({
     required this.id,
     required this.name,
     required this.shortDescription,
@@ -66,14 +66,13 @@ class Residence {
   @override
   String toString() => '$name (id=$id)';
 
-  static Residence fromJson(Map<String, dynamic> json) {
-    var _id = json['id'];
+  static Residence fromJson(String id, Map<String, dynamic> json) {
     String _name = json['name'];
     String _shortDescription = json['shortDescription'];
     String _address = json['address'];
     String _photo = json['photo'];
     return Residence(
-        id: _id,
+        id: id,
         name: _name,
         shortDescription: _shortDescription,
         address: _address,

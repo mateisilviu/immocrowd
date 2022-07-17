@@ -23,7 +23,7 @@ class ResidenceService implements ResidenceDao {
         var jsonResponseList =
             convert.jsonDecode(response.body) as Map<String, dynamic>;
         jsonResponseList.forEach((residenceId, residenceModel) {
-          loadedProperties.add(Residence.fromJson(residenceModel));
+          loadedProperties.add(Residence.fromJson(residenceId, residenceModel));
         });
       }
       return loadedProperties;
