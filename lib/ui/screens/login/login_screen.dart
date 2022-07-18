@@ -44,18 +44,18 @@ class _LoginScreenState extends State<LoginScreen> {
               },
               text: 'Google Sign In',
             ),
-            CustomButton(
-              onTap: () {
-                context.read<FirebaseAuthMethods>().signInWithFacebook(context);
-              },
-              text: 'Facebook Sign In',
-            ),
-            CustomButton(
-              onTap: () {
-                context.read<FirebaseAuthMethods>().signInAnonymously(context);
-              },
-              text: 'Anonymous Sign In',
-            ),
+            // CustomButton(
+            //   onTap: () {
+            //     context.read<FirebaseAuthMethods>().signInWithFacebook(context);
+            //   },
+            //   text: 'Facebook Sign In',
+            // ),
+            // CustomButton(
+            //   onTap: () {
+            //     context.read<FirebaseAuthMethods>().signInAnonymously(context);
+            //   },
+            //   text: 'Anonymous Sign In',
+            // ),
           ],
         ),
       ),

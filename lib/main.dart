@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:provider/provider.dart';
 
+import 'auth.dart';
 import 'core/providers/residence-provider.dart';
 import 'core/services/firebase_auth_methods.dart';
 import 'firebase_options.dart';
@@ -55,7 +56,7 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.purple,
               //: : Colors.deepOrange,
             ),
-            home: AuthWrapper(),
+            home: ViewPropertiesScreen(),
             routes: {
               EmailPasswordSignup.routeName: (context) =>
                   const EmailPasswordSignup(),
@@ -79,6 +80,6 @@ class AuthWrapper extends StatelessWidget {
     if (firebaseUser != null) {
       return const ViewPropertiesScreen();
     }
-    return const LoginScreen();
+    return const AuthGate();
   }
 }
