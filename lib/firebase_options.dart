@@ -42,6 +42,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '668255069444',
     projectId: 'immocrowd-49e21',
     authDomain: 'immocrowd-49e21.firebaseapp.com',
+    databaseURL: 'https://immocrowd-49e21-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'immocrowd-49e21.appspot.com',
     measurementId: 'G-T9K9Y1ZGF1',
   );
@@ -51,6 +52,7 @@ class DefaultFirebaseOptions {
     appId: '1:668255069444:android:ec2b2bee454e3d2f15dc51',
     messagingSenderId: '668255069444',
     projectId: 'immocrowd-49e21',
+    databaseURL: 'https://immocrowd-49e21-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'immocrowd-49e21.appspot.com',
   );
 
@@ -59,9 +61,9 @@ class DefaultFirebaseOptions {
     appId: '1:668255069444:ios:cab0097f9f78017315dc51',
     messagingSenderId: '668255069444',
     projectId: 'immocrowd-49e21',
+    databaseURL: 'https://immocrowd-49e21-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'immocrowd-49e21.appspot.com',
-    iosClientId:
-        '668255069444-buvi3bvjj3pmuf3nulss3i128qe269kq.apps.googleusercontent.com',
+    iosClientId: '668255069444-buvi3bvjj3pmuf3nulss3i128qe269kq.apps.googleusercontent.com',
     iosBundleId: 'com.example.immocrowd',
   );
 }

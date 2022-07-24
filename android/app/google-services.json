@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "668255069444",
+    "firebase_url": "https://immocrowd-49e21-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "immocrowd-49e21",
     "storage_bucket": "immocrowd-49e21.appspot.com"
   },
@@ -29,6 +30,13 @@
             {
               "client_id": "668255069444-c7oolgpi3uad8jh5adtul45e8bp14tfl.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "668255069444-buvi3bvjj3pmuf3nulss3i128qe269kq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.immocrowd"
+              }
             }
           ]
         }

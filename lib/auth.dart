@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 //import 'package:github_sign_in/github_sign_in.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:immocrowd/ui/widgets/user/profile.dart';
 //import 'package:twitter_login/twitter_login.dart';
 
 typedef OAuthSignIn = void Function();
@@ -53,6 +54,8 @@ extension on AuthMode {
 
 /// Entrypoint example for various sign-in flows with Firebase.
 class AuthGate extends StatefulWidget {
+  static String routeName = "/login";
+
   // ignore: public_member_api_docs
   const AuthGate({Key? key}) : super(key: key);
 
@@ -375,6 +378,7 @@ class _AuthGateState extends State<AuthGate> {
             email: emailController.text,
             password: passwordController.text,
           );
+          Navigator.of(context).pushReplacementNamed(ProfilePage.routeName);
         } else if (mode == AuthMode.register) {
           await _auth.createUserWithEmailAndPassword(
             email: emailController.text,

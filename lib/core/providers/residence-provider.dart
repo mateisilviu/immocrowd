@@ -26,12 +26,13 @@ class ResidenceProvider with ChangeNotifier {
     }
   }
 
-  Future<void> addResidence(Residence residence) async {
+  Future<Residence> addResidence(Residence residence) async {
     try {
       var newId = await _residenceService.addResidence(residence);
       var newResidence = Residence.updateId(newId, residence);
       _residenceInMemory.add(newResidence);
       notifyListeners();
+      return newResidence;
     } catch (error) {
       throw (error);
     }

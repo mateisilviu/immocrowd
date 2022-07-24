@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:immocrowd/ui/screens/manage_properties.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/services/firebase_auth_methods.dart';
 import '../../widgets/user/custom_textfield.dart';
+import '../manage_properties_screen.dart';
 
 class EmailPasswordLogin extends StatefulWidget {
   static String routeName = '/login-email-password';

@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_core: ^1.15.0
   firebase_auth: ^3.3.16
+  firebase_auth_web: ^4.0.0
   flutter_signin_button: ^2.0.0
   google_sign_in: ^5.3.0
   intl: ^0.17.0
@@ -44,6 +45,13 @@ dependencies:
   http: ^0.13.4
   file_picker: ^4.6.1
   flutter_facebook_auth: ^4.4.0+1
+  cloud_firestore: ^3.3.0
+  firebase_storage_web: ^3.3.1
+  image_picker: ^0.8.5+3
+  video_player: ^2.4.5
+  firebase_storage: ^10.3.3
+  uuid: ^3.0.6
+  carousel_slider: ^4.1.1
 
 dev_dependencies:
   flutter_test:

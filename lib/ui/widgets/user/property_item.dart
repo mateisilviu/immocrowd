@@ -1,20 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:immocrowd/core/models/residence.dart';
-import 'package:provider/provider.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
+import '../../../core/models/property.dart';
 import '../../screens/property_detail_screen.dart';
 
 class PropertyItem extends StatelessWidget {
-  const PropertyItem({Key? key}) : super(key: key);
+  PropertyItem(this.item);
+  final Property item;
 
   @override
   Widget build(BuildContext context) {
-    final residence = Provider.of<Residence>(context, listen: false);
     return Card(
       child: Column(
         children: <Widget>[
-          Stack(
+          CarouselSlider(
+            options: CarouselOptions(),
+            items: item.photo
+                .map((item) => Container(
+                      child: Center(
+                          child: Image.network(item,
+                              fit: BoxFit.cover, width: 1000)),
+                    ))
+                .toList(),
+          ),
+          /*   Stack(
             children: <Widget>[
+
+              
               Container(
                 height: 400,
                 width: 400,
@@ -25,7 +37,7 @@ class PropertyItem extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: new BorderRadius.circular(10.0),
                   image: DecorationImage(
-                    image: NetworkImage(residence.photo),
+                    image: 
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -70,12 +82,12 @@ class PropertyItem extends StatelessWidget {
                 ),
               )
             ],
-          ),
+          ),*/
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
-                residence.name,
+                item.name,
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -87,7 +99,7 @@ class PropertyItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
-                residence.shortDescription,
+                item.shortDescription,
                 style: TextStyle(
                   color: Colors.grey,
                 ),
