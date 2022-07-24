@@ -105,7 +105,11 @@ class PropertyItem extends StatelessWidget {
                 ),
               ),
             ],
-          )
+          ),
+          Row(children: [
+            OutlinedButton(onPressed: () => {}, child: const Text('Details')),
+            IconButton(onPressed: () => {}, icon: Icon(Icons.monetization_on))
+          ])
         ],
       ),
     );
