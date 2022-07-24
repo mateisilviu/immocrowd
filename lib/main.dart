@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 
 import 'auth.dart';
 import 'core/providers/properties-provider.dart';
-import 'core/providers/residence-provider.dart';
 import 'firebase_options.dart';
 import 'ui/screens/manage_properties_screen.dart';
 import 'ui/screens/login/login_email_password_screen.dart';
@@ -37,9 +36,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider<ResidenceProvider>(
-            create: (_) => ResidenceProvider(),
-          ),
           ChangeNotifierProvider<PropertiesProvider>(
             create: (_) => PropertiesProvider(),
           )

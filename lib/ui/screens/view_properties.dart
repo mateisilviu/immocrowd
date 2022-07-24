@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:immocrowd/core/providers/residence-provider.dart';
 import 'package:immocrowd/core/util/app-constants.dart';
-import 'package:provider/provider.dart';
 
 import '../widgets/user/app_drawer.dart';
 import '../widgets/user/profile.dart';
@@ -25,17 +23,6 @@ class _ViewPropertiesScreenState extends State<ViewPropertiesScreen> {
 
   @override
   void didChangeDependencies() {
-    if (_isInit) {
-      setState(() {
-        _isLoading = true;
-      });
-      Provider.of<ResidenceProvider>(context).getResidences().then((_) {
-        setState(() {
-          _isLoading = false;
-        });
-      });
-    }
-    _isInit = false;
     super.didChangeDependencies();
   }
 
