@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -7,6 +8,8 @@ import '../../screens/property_detail_screen.dart';
 class PropertyItem extends StatelessWidget {
   PropertyItem(this.item);
   final Property item;
+
+  final TextEditingController emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +110,43 @@ class PropertyItem extends StatelessWidget {
             ],
           ),
           Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-            OutlinedButton(onPressed: () => {}, child: const Text('Details')),
+            ElevatedButton(
+                onPressed: () async => {
+                      await showDialog(
+                        context: context,
+                        builder: (ctx) => AlertDialog(
+                          title: Text('Thank you for your interest!'),
+                          actions: <Widget>[
+                            Column(
+                              // crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                TextField(
+                                    controller: emailController,
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      hintText: 'Enter your email',
+                                    )),
+                                Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: ElevatedButton(
+                                        onPressed: () => {
+                                              FirebaseFirestore.instance
+                                                  .collection('new-clients')
+                                                  .add({
+                                                'email':
+                                                    emailController.value.text
+                                              }),
+                                              Navigator.of(ctx).pop()
+                                            },
+                                        child: const Text(
+                                            'Email me when this is ready.'))),
+                              ],
+                            )
+                          ],
+                        ),
+                      )
+                    },
+                child: const Text('Details')),
             // IconButton(onPressed: () => {}, icon: Icon(Icons.monetization_on))
           ])
         ],

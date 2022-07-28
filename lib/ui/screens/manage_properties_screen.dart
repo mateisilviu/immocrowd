@@ -98,10 +98,10 @@ class _ManagePropertiesScreenState extends State<ManagePropertiesScreen> {
         context: context,
         builder: (ctx) => AlertDialog(
           title: Text('Success!'),
-          content: Text('OK'),
+          content: Text('Added Succesfully'),
           actions: <Widget>[
             FlatButton(
-              child: Text('Added Succesfully'),
+              child: Text('OK'),
               onPressed: () {
                 setState(() {
                   newProperty = Property(
