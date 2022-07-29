@@ -32,7 +32,7 @@ class PropertyGrid extends StatelessWidget {
             itemBuilder: (ctx, i) =>
                 PropertyItem(propertiesDocs[i].data() as Property),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+              crossAxisCount: ResponsiveWidget.calculateCrossAxisCount(context),
               childAspectRatio: 3 / 2,
               crossAxisSpacing: responsivePadding / 5,
               mainAxisSpacing: responsivePadding / 5,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:immocrowd/core/util/responsive.dart';
 import 'package:immocrowd/ui/screens/view_properties.dart';
 
 import '../../../core/util/app-constants.dart';
-import '../../screens/home_screen.dart';
 
 class HeaderWidget extends StatelessWidget {
   @override
@@ -10,29 +10,17 @@ class HeaderWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        // logo
-        Container(
-          width: 200,
-          height: 60,
-          child: const InkWell(
-            child: Text(
-              AppConstants.TITLE,
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                color: Color(0xff28313b),
-                fontSize: 24,
-                fontWeight: FontWeight.w400,
-                fontStyle: FontStyle.normal,
-                //  letterSpacing: 1.627907,
-              ),
-            ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: InkWell(
+            child: Text(AppConstants.TITLE,
+                style: ResponsiveWidget.calculateTextStyle(context)),
             // onTap: () => {
             //       Navigator.of(context)
             //           .pushReplacementNamed(HomeScreen.routeName)
             //     }
           ),
         ),
-
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -45,14 +33,7 @@ class HeaderWidget extends StatelessWidget {
                 },
                 child: Text(
                   'Properties',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    color: Color(0xff28313b),
-                    fontSize: 24,
-                    fontWeight: FontWeight.w400,
-                    fontStyle: FontStyle.normal,
-                    //  letterSpacing: 1.627907,
-                  ),
+                  style: ResponsiveWidget.calculateTextStyle(context),
                 ),
               ),
             ),
@@ -60,42 +41,21 @@ class HeaderWidget extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 'Blog',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  color: Color(0xff28313b),
-                  fontSize: 24,
-                  fontWeight: FontWeight.w400,
-                  fontStyle: FontStyle.normal,
-                  //letterSpacing: 1.627907,
-                ),
+                style: ResponsiveWidget.calculateTextStyle(context),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 'FAQ',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  color: Color(0xff28313b),
-                  fontSize: 24,
-                  fontWeight: FontWeight.w400,
-                  fontStyle: FontStyle.normal,
-                  //  letterSpacing: 1.627907,
-                ),
+                style: ResponsiveWidget.calculateTextStyle(context),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 'About us',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  color: Color(0xff28313b),
-                  fontSize: 24,
-                  fontWeight: FontWeight.w400,
-                  fontStyle: FontStyle.normal,
-                  // letterSpacing: 1.627907,
-                ),
+                style: ResponsiveWidget.calculateTextStyle(context),
               ),
             ),
           ],

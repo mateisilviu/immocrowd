@@ -2,28 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:immocrowd/core/util/app-constants.dart';
 
 import '../../../core/util/design-constants.dart';
+import '../../../core/util/responsive.dart';
 
 class LeftDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var dimension = ResponsiveWidget.calculatePadding_20_100_150(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        SizedBox(height: 150),
+        SizedBox(height: dimension),
         // title
         FittedBox(
           child: new Text('''Invest in real estate
 with a single click 
 and small amount of money.''',
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                color: Color(0xff28313b),
-                fontSize: 50,
-                fontWeight: FontWeight.w400,
-                fontStyle: FontStyle.normal,
-                //letterSpacing: 1.5,
-              )),
+              style: ResponsiveWidget.calculateTextStyle(context, huge: true)),
         ),
         // Description
         RichText(
@@ -33,14 +28,7 @@ and small amount of money.''',
                   '''coowner.estate is a platform where you can build a real estate portofolio. 
               You invest small amounts of money along side other investors.
               You will receive dividents from rented properties.''',
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                color: Color(0xff1a345d),
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                fontStyle: FontStyle.normal,
-                letterSpacing: 1,
-              )),
+              style: ResponsiveWidget.calculateTextStyle(context)),
         ])),
         SizedBox(
           height: 20,
@@ -52,17 +40,10 @@ and small amount of money.''',
               onTap: () {},
               child: new Container(
                   width: 150,
-                  height: 57,
+                  height: 50,
                   child: Center(
                     child: new Text("Learn More",
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          color: Color(Colors.black.value),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.normal,
-                          letterSpacing: 2,
-                        )),
+                        style: ResponsiveWidget.calculateTextStyle(context)),
                   ),
                   decoration: new BoxDecoration(
                       color: Color(DesignConstants.GREEN),
@@ -79,14 +60,7 @@ and small amount of money.''',
               width: 10,
             ),
             new Text("Watch demo",
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  color: Color(DesignConstants.GREEN),
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  fontStyle: FontStyle.normal,
-                  letterSpacing: 2,
-                ))
+                style: ResponsiveWidget.calculateTextStyle(context))
           ],
         ),
         SizedBox(

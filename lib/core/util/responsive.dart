@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:immocrowd/core/util/design-constants.dart';
 
 class ResponsiveWidget extends StatelessWidget {
   final Widget largeScreen;
@@ -23,6 +24,34 @@ class ResponsiveWidget extends StatelessWidget {
   static bool isMediumScreen(BuildContext context) {
     return MediaQuery.of(context).size.width >= 800 &&
         MediaQuery.of(context).size.width <= 1200;
+  }
+
+  static double calculatePadding_20_100_150(BuildContext context) {
+    return ResponsiveWidget.isSmallScreen(context)
+        ? 20.0
+        : ResponsiveWidget.isMediumScreen(context)
+            ? 100.0
+            : 150.0;
+  }
+
+  static TextStyle calculateTextStyle(BuildContext context,
+      {bool huge = false}) {
+    if (huge == true && ResponsiveWidget.isLargeScreen(context)) {
+      return DesignConstants.hugeText;
+    }
+    return ResponsiveWidget.isSmallScreen(context)
+        ? DesignConstants.smallText
+        : ResponsiveWidget.isMediumScreen(context)
+            ? DesignConstants.mediumText
+            : DesignConstants.largeText;
+  }
+
+  static int calculateCrossAxisCount(BuildContext context) {
+    return ResponsiveWidget.isSmallScreen(context)
+        ? 1
+        : ResponsiveWidget.isMediumScreen(context)
+            ? 2
+            : 3;
   }
 
   @override
