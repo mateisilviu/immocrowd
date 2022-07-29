@@ -1,9 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:immocrowd/ui/screens/view_properties.dart';
 import 'package:provider/provider.dart';
-
-import '../../screens/manage_properties_screen.dart';
-import 'profile.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -11,7 +9,7 @@ class AppDrawer extends StatelessWidget {
     final firebaseUser = context.watch<User?>();
     return Drawer(
         child: Column(children: [
-      AppBar(title: const Text('Hello'), automaticallyImplyLeading: false),
+      AppBar(title: null, automaticallyImplyLeading: false),
       ListTile(
         leading: const Icon(Icons.home),
         title: const Text('Home'),
@@ -22,31 +20,19 @@ class AppDrawer extends StatelessWidget {
       //firebaseUser != null
       // ?
       ListTile(
-        leading: const Icon(Icons.add_task),
-        title: const Text('Manage Properties'),
+        leading: const Icon(Icons.list_alt),
+        title: const Text('View Properties'),
         onTap: () {
           Navigator.of(context)
-              .pushReplacementNamed(ManagePropertiesScreen.routeName);
+              .pushReplacementNamed(ViewPropertiesScreen.routeName);
         },
       ),
-      /*   : ListTile(
-              leading: const Icon(Icons.add_task),
-              title: const Text('Manage Properties'),
-              onTap: null,
-            ),*/
-      firebaseUser != null
-          ? ListTile(
-              leading: const Icon(Icons.person),
-              title: const Text('Profile'),
-              onTap: () {
-                Navigator.of(context)
-                    .pushReplacementNamed(ProfilePage.routeName);
-              },
-            )
-          : ListTile(
-              leading: const Icon(Icons.person),
-              title: const Text('Profile'),
-              onTap: null),
+      const ListTile(
+          leading: Icon(Icons.rss_feed), title: Text('Blog'), onTap: null),
+      const ListTile(
+          leading: Icon(Icons.question_mark), title: Text('FAQ'), onTap: null),
+      const ListTile(
+          leading: Icon(Icons.group), title: Text('About us'), onTap: null),
     ]));
   }
 }

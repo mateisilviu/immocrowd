@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:immocrowd/core/util/responsive.dart';
 
 import '../../../core/models/property.dart';
 import '../../screens/property_detail_screen.dart';
@@ -13,8 +14,10 @@ class PropertyItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var padding = ResponsiveWidget.isLargeScreen(context) ? 10.0 : 5.0;
     return Card(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           CarouselSlider(
             options: CarouselOptions(),
@@ -87,66 +90,70 @@ class PropertyItem extends StatelessWidget {
             ],
           ),*/
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text(
-                item.name,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              Padding(
+                  padding: EdgeInsets.all(padding),
+                  child: Text(
+                    item.name,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )),
             ],
           ),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text(
-                item.shortDescription,
-                style: TextStyle(
-                  color: Colors.grey,
-                ),
-              ),
+              Padding(
+                  padding: EdgeInsets.all(padding),
+                  child: Text(
+                    item.shortDescription,
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                  )),
             ],
           ),
-          Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-            ElevatedButton(
-                onPressed: () async => {
-                      await showDialog(
-                        context: context,
-                        builder: (ctx) => AlertDialog(
-                          title: Text('Thank you for your interest!'),
-                          actions: <Widget>[
-                            Column(
-                              // crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                TextField(
-                                    controller: emailController,
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
-                                      hintText: 'Enter your email',
-                                    )),
-                                Padding(
-                                    padding: EdgeInsets.all(10),
-                                    child: ElevatedButton(
-                                        onPressed: () => {
-                                              FirebaseFirestore.instance
-                                                  .collection('new-clients')
-                                                  .add({
-                                                'email':
-                                                    emailController.value.text
-                                              }),
-                                              Navigator.of(ctx).pop()
-                                            },
-                                        child: const Text(
-                                            'Email me when this is ready.'))),
+          Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+            Padding(
+                padding: EdgeInsets.all(padding),
+                child: ElevatedButton(
+                    onPressed: () async => {
+                          await showDialog(
+                            context: context,
+                            builder: (ctx) => AlertDialog(
+                              title: Text('Thank you for your interest!'),
+                              actions: <Widget>[
+                                Column(
+                                  // crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    TextField(
+                                        controller: emailController,
+                                        decoration: InputDecoration(
+                                          border: OutlineInputBorder(),
+                                          hintText: 'Enter your email',
+                                        )),
+                                    Padding(
+                                        padding: EdgeInsets.all(10),
+                                        child: ElevatedButton(
+                                            onPressed: () => {
+                                                  FirebaseFirestore.instance
+                                                      .collection('new-clients')
+                                                      .add({
+                                                    'email': emailController
+                                                        .value.text
+                                                  }),
+                                                  Navigator.of(ctx).pop()
+                                                },
+                                            child: const Text(
+                                                'Email me when this is ready.'))),
+                                  ],
+                                )
                               ],
-                            )
-                          ],
-                        ),
-                      )
-                    },
-                child: const Text('Details')),
+                            ),
+                          )
+                        },
+                    child: const Text('Details'))),
             // IconButton(onPressed: () => {}, icon: Icon(Icons.monetization_on))
           ])
         ],

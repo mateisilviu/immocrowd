@@ -33,9 +33,10 @@ class PropertyGrid extends StatelessWidget {
                 PropertyItem(propertiesDocs[i].data() as Property),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: ResponsiveWidget.calculateCrossAxisCount(context),
-              childAspectRatio: 3 / 2,
-              crossAxisSpacing: responsivePadding / 5,
-              mainAxisSpacing: responsivePadding / 5,
+              childAspectRatio:
+                  ResponsiveWidget.isMediumScreen(context) ? 1 : 5 / 4,
+              crossAxisSpacing: responsivePadding / 2,
+              mainAxisSpacing: responsivePadding / 4,
             ),
           );
         });

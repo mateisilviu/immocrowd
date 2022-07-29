@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../core/util/app-constants.dart';
 import '../../core/util/responsive.dart';
 import '../widgets/general/header.dart';
 import '../widgets/general/left_description.dart';
+import '../widgets/user/app_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -20,18 +22,21 @@ class HomeScreen extends StatelessWidget {
               fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        //appBar: // Your app bar
+        appBar: ResponsiveWidget.isSmallScreen(context)
+            ? AppBar(title: const InkWell(child: Text(AppConstants.TITLE)))
+            : null, // Your app bar
         // backgroundColor: const Color(0xff6ae792),
-
+        drawer: ResponsiveWidget.isSmallScreen(context) ? AppDrawer() : null,
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               // Top Header
-              Padding(
-                padding:
-                    EdgeInsets.only(left: padding, top: 20, right: padding),
-                child: HeaderWidget(),
-              ),
+              if (ResponsiveWidget.isSmallScreen(context) == false)
+                Padding(
+                  padding:
+                      EdgeInsets.only(left: padding, top: 20, right: padding),
+                  child: HeaderWidget(),
+                ),
               Padding(
                 padding: EdgeInsets.only(left: padding, top: 0, right: padding),
                 child: Row(
