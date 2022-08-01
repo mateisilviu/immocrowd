@@ -23,8 +23,6 @@ class _EmailPasswordLoginState extends State<EmailPasswordLogin> {
           password: passwordController.text,
           context: context,
         );
-    Navigator.of(context)
-        .pushReplacementNamed(ManagePropertiesScreen.routeName);
   }
 
   @override

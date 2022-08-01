@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../auth.dart';
+import '../../../core/util/app-constants.dart';
+import '../../../core/util/responsive.dart';
 import '../../../core/util/showSnackbar.dart';
+import 'app_drawer.dart';
 
 //import '../../../auth.dart';
 
@@ -107,6 +110,14 @@ class _ProfilePageState extends State<ProfilePage> {
         : GestureDetector(
             onTap: FocusScope.of(context).unfocus,
             child: Scaffold(
+              backgroundColor: Colors.transparent,
+              appBar: ResponsiveWidget.isSmallScreen(context)
+                  ? AppBar(
+                      title: const InkWell(child: Text(AppConstants.TITLE)))
+                  : null, // Your app bar
+              // backgroundColor: const Color(0xff6ae792),
+              drawer:
+                  ResponsiveWidget.isSmallScreen(context) ? AppDrawer() : null,
               body: Stack(
                 children: [
                   Center(

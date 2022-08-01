@@ -33,6 +33,12 @@ class AppDrawer extends StatelessWidget {
           leading: Icon(Icons.question_mark), title: Text('FAQ'), onTap: null),
       const ListTile(
           leading: Icon(Icons.group), title: Text('About us'), onTap: null),
+      if (firebaseUser != null &&
+          firebaseUser.email!.compareTo('tzevy.cont@gmail.com') == 0)
+        const ListTile(
+            leading: Icon(Icons.group),
+            title: Text('Manage properties'),
+            onTap: null),
     ]));
   }
 }

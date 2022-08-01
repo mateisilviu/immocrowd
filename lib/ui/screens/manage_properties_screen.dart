@@ -8,6 +8,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -15,6 +16,7 @@ import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
+import '../../auth.dart';
 import '../../core/models/property.dart';
 import '../../core/providers/properties-provider.dart';
 import '../widgets/user/app_drawer.dart';
@@ -341,184 +343,196 @@ class _ManagePropertiesScreenState extends State<ManagePropertiesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          title: const Text('Manage Properties'),
-          actions: [IconButton(onPressed: _saveForm, icon: Icon(Icons.save))]),
-      drawer: AppDrawer(),
-      body:
-          // !kIsWeb && defaultTargetPlatform == TargetPlatform.android
-          //     ? FutureBuilder<void>(
-          //         future: retrieveLostData(),
-          //         builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
-          //           switch (snapshot.connectionState) {
-          //             case ConnectionState.none:
-          //             case ConnectionState.waiting:
-          //               return const Text(
-          //                 'You have not yet picked an image.',
-          //                 textAlign: TextAlign.center,
-          //               );
-          //             case ConnectionState.done:
-          //               return _handlePreview();
-          //             default:
-          //               if (snapshot.hasError) {
-          //                 return Text(
-          //                   'Pick image/video error: ${snapshot.error}}',
-          //                   textAlign: TextAlign.center,
-          //                 );
-          //               } else {
-          //                 return const Text(
-          //                   'You have not yet picked an image.',
-          //                   textAlign: TextAlign.center,
-          //                 );
-          //               }
-          //           }
-          //         },
-          //       )
-          //     : _handlePreview(),
-          Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _form,
-          child: ListView(children: <Widget>[
-            TextFormField(
-              initialValue: '',
-              decoration: InputDecoration(labelText: 'Name'),
-              textInputAction: TextInputAction.next,
-              onFieldSubmitted: (_) {
-                FocusScope.of(context).requestFocus(_descriptionFocusNode);
-              },
-              validator: (value) {
-                if (value != null && value.isEmpty) {
-                  return 'Please provide a value.';
-                }
-                return null;
-              },
-              onSaved: (value) {
-                newProperty = Property.updateName(value!, newProperty);
-              },
+    return FirebaseAuth.instance.currentUser == null
+        ? TextButton(
+            onPressed: () => {
+              Navigator.of(context).pushReplacementNamed(AuthGate.routeName)
+            },
+            child: const Text('Please sign in or register.'),
+          )
+        : Scaffold(
+            appBar: AppBar(title: const Text('Manage Properties'), actions: [
+              IconButton(onPressed: _saveForm, icon: Icon(Icons.save))
+            ]),
+            drawer: AppDrawer(),
+            body:
+                // !kIsWeb && defaultTargetPlatform == TargetPlatform.android
+                //     ? FutureBuilder<void>(
+                //         future: retrieveLostData(),
+                //         builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+                //           switch (snapshot.connectionState) {
+                //             case ConnectionState.none:
+                //             case ConnectionState.waiting:
+                //               return const Text(
+                //                 'You have not yet picked an image.',
+                //                 textAlign: TextAlign.center,
+                //               );
+                //             case ConnectionState.done:
+                //               return _handlePreview();
+                //             default:
+                //               if (snapshot.hasError) {
+                //                 return Text(
+                //                   'Pick image/video error: ${snapshot.error}}',
+                //                   textAlign: TextAlign.center,
+                //                 );
+                //               } else {
+                //                 return const Text(
+                //                   'You have not yet picked an image.',
+                //                   textAlign: TextAlign.center,
+                //                 );
+                //               }
+                //           }
+                //         },
+                //       )
+                //     : _handlePreview(),
+                Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Form(
+                key: _form,
+                child: ListView(children: <Widget>[
+                  TextFormField(
+                    initialValue: '',
+                    decoration: InputDecoration(labelText: 'Name'),
+                    textInputAction: TextInputAction.next,
+                    onFieldSubmitted: (_) {
+                      FocusScope.of(context)
+                          .requestFocus(_descriptionFocusNode);
+                    },
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return 'Please provide a value.';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      newProperty = Property.updateName(value!, newProperty);
+                    },
+                  ),
+                  TextFormField(
+                      initialValue: '',
+                      decoration:
+                          InputDecoration(labelText: 'Short description'),
+                      textInputAction: TextInputAction.next,
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_addressFocusNode);
+                      },
+                      validator: (value) {
+                        if (value != null && value.isEmpty) {
+                          return 'Please provide a value.';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        newProperty = Property.updateShortDescription(
+                            value!, newProperty);
+                      }),
+                  TextFormField(
+                      initialValue: '',
+                      decoration: InputDecoration(labelText: 'Address'),
+                      textInputAction: TextInputAction.next,
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_photoFocusNode);
+                      },
+                      validator: (value) {
+                        if (value != null && value.isEmpty) {
+                          return 'Please provide a value.';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        newProperty =
+                            Property.updateAddress(value!, newProperty);
+                      }),
+                  // TextFormField(
+                  //     initialValue: '',
+                  //     decoration: InputDecoration(labelText: 'Photo'),
+                  //     textInputAction: TextInputAction.next,
+                  //     validator: (value) {
+                  //       if (value != null && value.isEmpty) {
+                  //         return 'Please provide a value.';
+                  //       }
+                  //       return null;
+                  //     },
+                  //     onSaved: (value) {
+                  //       newProperty = Residence.updatePhoto(value!, newProperty);
+                  //     })
+                ]),
+              ),
             ),
-            TextFormField(
-                initialValue: '',
-                decoration: InputDecoration(labelText: 'Short description'),
-                textInputAction: TextInputAction.next,
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_addressFocusNode);
-                },
-                validator: (value) {
-                  if (value != null && value.isEmpty) {
-                    return 'Please provide a value.';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  newProperty =
-                      Property.updateShortDescription(value!, newProperty);
-                }),
-            TextFormField(
-                initialValue: '',
-                decoration: InputDecoration(labelText: 'Address'),
-                textInputAction: TextInputAction.next,
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_photoFocusNode);
-                },
-                validator: (value) {
-                  if (value != null && value.isEmpty) {
-                    return 'Please provide a value.';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  newProperty = Property.updateAddress(value!, newProperty);
-                }),
-            // TextFormField(
-            //     initialValue: '',
-            //     decoration: InputDecoration(labelText: 'Photo'),
-            //     textInputAction: TextInputAction.next,
-            //     validator: (value) {
-            //       if (value != null && value.isEmpty) {
-            //         return 'Please provide a value.';
-            //       }
-            //       return null;
-            //     },
-            //     onSaved: (value) {
-            //       newProperty = Residence.updatePhoto(value!, newProperty);
-            //     })
-          ]),
-        ),
-      ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          Semantics(
-            label: 'image_picker_example_from_gallery',
-            child: FloatingActionButton(
-              onPressed: () {
-                isVideo = false;
-                _onImageButtonPressed(ImageSource.gallery, context: context);
-              },
-              heroTag: 'image0',
-              tooltip: 'Pick Image from gallery',
-              child: const Icon(Icons.photo),
+            floatingActionButton: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                Semantics(
+                  label: 'image_picker_example_from_gallery',
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      isVideo = false;
+                      _onImageButtonPressed(ImageSource.gallery,
+                          context: context);
+                    },
+                    heroTag: 'image0',
+                    tooltip: 'Pick Image from gallery',
+                    child: const Icon(Icons.photo),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      isVideo = false;
+                      _onImageButtonPressed(
+                        ImageSource.gallery,
+                        context: context,
+                        isMultiImage: true,
+                      );
+                    },
+                    heroTag: 'image1',
+                    tooltip: 'Pick Multiple Image from gallery',
+                    child: const Icon(Icons.photo_library),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      isVideo = false;
+                      _onImageButtonPressed(ImageSource.camera,
+                          context: context);
+                    },
+                    heroTag: 'image2',
+                    tooltip: 'Take a Photo',
+                    child: const Icon(Icons.camera_alt),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: FloatingActionButton(
+                    backgroundColor: Colors.red,
+                    onPressed: () {
+                      isVideo = true;
+                      _onImageButtonPressed(ImageSource.gallery);
+                    },
+                    heroTag: 'video0',
+                    tooltip: 'Pick Video from gallery',
+                    child: const Icon(Icons.video_library),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: FloatingActionButton(
+                    backgroundColor: Colors.red,
+                    onPressed: () {
+                      isVideo = true;
+                      _onImageButtonPressed(ImageSource.camera);
+                    },
+                    heroTag: 'video1',
+                    tooltip: 'Take a Video',
+                    child: const Icon(Icons.videocam),
+                  ),
+                ),
+              ],
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 16.0),
-            child: FloatingActionButton(
-              onPressed: () {
-                isVideo = false;
-                _onImageButtonPressed(
-                  ImageSource.gallery,
-                  context: context,
-                  isMultiImage: true,
-                );
-              },
-              heroTag: 'image1',
-              tooltip: 'Pick Multiple Image from gallery',
-              child: const Icon(Icons.photo_library),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 16.0),
-            child: FloatingActionButton(
-              onPressed: () {
-                isVideo = false;
-                _onImageButtonPressed(ImageSource.camera, context: context);
-              },
-              heroTag: 'image2',
-              tooltip: 'Take a Photo',
-              child: const Icon(Icons.camera_alt),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 16.0),
-            child: FloatingActionButton(
-              backgroundColor: Colors.red,
-              onPressed: () {
-                isVideo = true;
-                _onImageButtonPressed(ImageSource.gallery);
-              },
-              heroTag: 'video0',
-              tooltip: 'Pick Video from gallery',
-              child: const Icon(Icons.video_library),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 16.0),
-            child: FloatingActionButton(
-              backgroundColor: Colors.red,
-              onPressed: () {
-                isVideo = true;
-                _onImageButtonPressed(ImageSource.camera);
-              },
-              heroTag: 'video1',
-              tooltip: 'Take a Video',
-              child: const Icon(Icons.videocam),
-            ),
-          ),
-        ],
-      ),
-    );
+          );
   }
 
   Text? _getRetrieveErrorWidget() {
