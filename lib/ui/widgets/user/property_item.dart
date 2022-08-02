@@ -153,6 +153,15 @@ class PropertyItem extends StatelessWidget {
                             ),
                           )
                         },
+                    child: const Text('Invest'))),
+            Padding(
+                padding: EdgeInsets.all(padding),
+                child: ElevatedButton(
+                    onPressed: () => {
+                          Navigator.of(context).pushNamed(
+                              PropertyDetailScreen.routeName,
+                              arguments: item)
+                        },
                     child: const Text('Details'))),
             // IconButton(onPressed: () => {}, icon: Icon(Icons.monetization_on))
           ])
