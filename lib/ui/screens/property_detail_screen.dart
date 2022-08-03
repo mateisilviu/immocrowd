@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/models/property.dart';
 import '../../core/util/responsive.dart';
+import '../widgets/general/tabs/location-tab.dart';
 import '../widgets/general/tabs/photos-tab.dart';
 
 class PropertyDetailScreen extends StatefulWidget {
@@ -94,7 +95,7 @@ class _PropertyDetailScreenState extends State<PropertyDetailScreen>
                 children: [
                   Text("Details"),
                   PhotosTab(selectedProperty),
-                  Text("Location"),
+                  LocationTab(selectedProperty),
                   Text("Investment case"),
                   Text("Documents"),
                   Text("Updates"),
