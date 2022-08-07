@@ -54,7 +54,7 @@ extension on AuthMode {
 
 /// Entrypoint example for various sign-in flows with Firebase.
 class AuthGate extends StatefulWidget {
-  static String routeName = "/login";
+  static const String routeName = "/login";
 
   // ignore: public_member_api_docs
   const AuthGate({Key? key}) : super(key: key);

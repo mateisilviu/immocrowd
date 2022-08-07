@@ -162,8 +162,8 @@ class PropertyItem extends StatelessWidget {
                           // Navigator.of(context).pushNamed(
                           //     PropertyDetailScreen.routeName,
                           //     arguments: item)
-                          Navigator.of(context).pushNamed(
-                              PropertyDetailsScreen.routeName,
+                          Navigator.pushNamed(
+                              context, PropertyDetailsScreen.routeName,
                               arguments: item)
                         },
                     child: const Text('Details'))),
@@ -174,8 +174,8 @@ class PropertyItem extends StatelessWidget {
                           // Navigator.of(context).pushNamed(
                           //     PropertyDetailScreen.routeName,
                           //     arguments: item)
-                          Navigator.of(context).pushNamed(
-                              PropertyDetailScreen.routeName,
+                          Navigator.pushNamed(
+                              context, PropertyDetailScreen.routeName,
                               arguments: item)
                         },
                     child: const Text('Details 2')))

@@ -5,7 +5,7 @@ import '../../../core/services/firebase_auth_methods.dart';
 import '../../widgets/user/custom_textfield.dart';
 
 class EmailPasswordSignup extends StatefulWidget {
-  static String routeName = '/signup-email-password';
+  static const String routeName = '/signup-email-password';
   const EmailPasswordSignup({Key? key}) : super(key: key);
 
   @override

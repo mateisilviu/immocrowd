@@ -6,7 +6,7 @@ import '../../widgets/user/custom_textfield.dart';
 import '../manage_properties_screen.dart';
 
 class EmailPasswordLogin extends StatefulWidget {
-  static String routeName = '/login-email-password';
+  static const String routeName = '/login-email-password';
   const EmailPasswordLogin({Key? key}) : super(key: key);
 
   @override

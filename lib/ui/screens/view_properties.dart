@@ -8,7 +8,7 @@ import '../widgets/user/property_grid.dart';
 import 'home_screen.dart';
 
 class ViewPropertiesScreen extends StatefulWidget {
-  static String routeName = '/view-properties';
+  static const String routeName = '/view-properties';
 
   const ViewPropertiesScreen({Key? key}) : super(key: key);
 

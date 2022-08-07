@@ -5,18 +5,11 @@ import 'package:immocrowd/core/util/app-constants.dart';
 import 'package:immocrowd/core/util/design-constants.dart';
 import 'package:provider/provider.dart';
 
-import 'auth.dart';
 import 'core/providers/properties-provider.dart';
 import 'firebase_options.dart';
+import 'route-generator.dart';
 import 'ui/screens/home_screen.dart';
-import 'ui/screens/manage_properties_screen.dart';
-import 'ui/screens/login/login_email_password_screen.dart';
-import 'ui/screens/login/phone_screen.dart';
-import 'ui/screens/login/signup_email_password_screen.dart';
-import 'ui/screens/property_detail_screen.dart';
-import 'ui/screens/property_details_screen.dart';
 import 'ui/screens/view_properties.dart';
-import 'ui/widgets/user/profile.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -66,29 +59,15 @@ class MyApp extends StatelessWidget {
           )
         ],
         child: MaterialApp(
-            title: AppConstants.TITLE,
-            theme: ThemeData(
-              primarySwatch: createMaterialColor(Color(DesignConstants.GREEN)),
-              //: : Colors.deepOrange,
-            ),
-            home: HomeScreen(),
-            routes: {
-              ViewPropertiesScreen.routeName: (context) =>
-                  const ViewPropertiesScreen(),
-              EmailPasswordSignup.routeName: (context) =>
-                  const EmailPasswordSignup(),
-              EmailPasswordLogin.routeName: (context) =>
-                  const EmailPasswordLogin(),
-              PhoneScreen.routeName: (context) => const PhoneScreen(),
-              ManagePropertiesScreen.routeName: ((context) =>
-                  ManagePropertiesScreen()),
-              ProfilePage.routeName: (context) => const ProfilePage(),
-              AuthGate.routeName: (context) => const AuthGate(),
-              PropertyDetailScreen.routeName: (context) =>
-                  PropertyDetailScreen(),
-              PropertyDetailsScreen.routeName: (context) =>
-                  PropertyDetailsScreen(),
-            }));
+          title: AppConstants.TITLE,
+          theme: ThemeData(
+            primarySwatch: createMaterialColor(Color(DesignConstants.GREEN)),
+            //: : Colors.deepOrange,
+          ),
+          home: HomeScreen(),
+          onGenerateRoute: RouteGenerator.generateRoute,
+          initialRoute: '/',
+        ));
   }
 }
 

@@ -13,7 +13,7 @@ import '../widgets/general/tabs/investmant-case.dart';
 import '../widgets/general/tabs/photos-tab.dart';
 
 class PropertyDetailsScreen extends StatelessWidget {
-  static String routeName = "/details";
+  static const String routeName = "/details";
 
   /*Property selectedProperty = Property(
       id: "id",
