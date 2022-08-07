@@ -14,6 +14,7 @@ import 'ui/screens/login/login_email_password_screen.dart';
 import 'ui/screens/login/phone_screen.dart';
 import 'ui/screens/login/signup_email_password_screen.dart';
 import 'ui/screens/property_detail_screen.dart';
+import 'ui/screens/property_details_screen.dart';
 import 'ui/screens/view_properties.dart';
 import 'ui/widgets/user/profile.dart';
 
@@ -85,6 +86,8 @@ class MyApp extends StatelessWidget {
               AuthGate.routeName: (context) => const AuthGate(),
               PropertyDetailScreen.routeName: (context) =>
                   PropertyDetailScreen(),
+              PropertyDetailsScreen.routeName: (context) =>
+                  PropertyDetailsScreen(),
             }));
   }
 }

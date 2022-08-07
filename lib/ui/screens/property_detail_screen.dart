@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:immocrowd/ui/widgets/general/tabs/investmant-case.dart';
 
 import '../../core/models/property.dart';
 import '../../core/util/responsive.dart';
@@ -34,8 +35,11 @@ class _PropertyDetailScreenState extends State<PropertyDetailScreen>
   Widget build(BuildContext context) {
     final selectedProperty =
         ModalRoute.of(context)!.settings.arguments as Property;
-    return MaterialApp(
-      home: DefaultTabController(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(selectedProperty.name),
+      ),
+      body: DefaultTabController(
         length: 6,
         child: Scaffold(
             appBar: AppBar(
@@ -46,8 +50,7 @@ class _PropertyDetailScreenState extends State<PropertyDetailScreen>
                 indicatorSize: TabBarIndicatorSize.label,
                 indicator: BoxDecoration(
                     borderRadius: BorderRadius.circular(50), // Creates border
-                    color:
-                        Colors.greenAccent), //Change background color from here
+                    color: Colors.white), //Change background color from here
                 automaticIndicatorColorAdjustment: true,
                 tabs: [
                   Tab(
@@ -96,7 +99,7 @@ class _PropertyDetailScreenState extends State<PropertyDetailScreen>
                   Text("Details"),
                   PhotosTab(selectedProperty),
                   LocationTab(selectedProperty),
-                  Text("Investment case"),
+                  InvestmantCase(),
                   Text("Documents"),
                   Text("Updates"),
                 ],

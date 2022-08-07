@@ -485,6 +485,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.4"
+  scrollable_list_tabview:
+    dependency: "direct main"
+    description:
+      name: scrollable_list_tabview
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0-nullsafety"
+  scrollable_positioned_list:
+    dependency: transitive
+    description:
+      name: scrollable_positioned_list
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.3"
   sky_engine:
     dependency: transitive
     description: flutter

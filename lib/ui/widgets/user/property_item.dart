@@ -5,6 +5,7 @@ import 'package:immocrowd/core/util/responsive.dart';
 
 import '../../../core/models/property.dart';
 import '../../screens/property_detail_screen.dart';
+import '../../screens/property_details_screen.dart';
 
 class PropertyItem extends StatelessWidget {
   PropertyItem(this.item);
@@ -158,11 +159,26 @@ class PropertyItem extends StatelessWidget {
                 padding: EdgeInsets.all(padding),
                 child: ElevatedButton(
                     onPressed: () => {
+                          // Navigator.of(context).pushNamed(
+                          //     PropertyDetailScreen.routeName,
+                          //     arguments: item)
+                          Navigator.of(context).pushNamed(
+                              PropertyDetailsScreen.routeName,
+                              arguments: item)
+                        },
+                    child: const Text('Details'))),
+            Padding(
+                padding: EdgeInsets.all(padding),
+                child: ElevatedButton(
+                    onPressed: () => {
+                          // Navigator.of(context).pushNamed(
+                          //     PropertyDetailScreen.routeName,
+                          //     arguments: item)
                           Navigator.of(context).pushNamed(
                               PropertyDetailScreen.routeName,
                               arguments: item)
                         },
-                    child: const Text('Details'))),
+                    child: const Text('Details 2')))
             // IconButton(onPressed: () => {}, icon: Icon(Icons.monetization_on))
           ])
         ],
