@@ -4,6 +4,8 @@ class DesignConstants {
   static int GREEN = 0xff97f9e3;
   static int BLACK_BLUE = 0xff28313b;
 
+  // orange fdb43cff , f47a11ff
+
   static TextStyle hugeText = TextStyle(
     fontFamily: 'Poppins',
     color: Color(DesignConstants.BLACK_BLUE),

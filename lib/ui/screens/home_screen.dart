@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/util/app-constants.dart';
 import '../../core/util/responsive.dart';
+import '../widgets/general/footer/footer.dart';
 import '../widgets/general/header.dart';
 import '../widgets/general/left_description.dart';
 import '../widgets/user/app_drawer.dart';
@@ -14,46 +15,64 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var padding = ResponsiveWidget.calculatePadding_20_100_150(context);
-    return Container(
-      constraints: const BoxConstraints.expand(),
-      decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/images/home_page.png"),
-              fit: BoxFit.cover)),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: ResponsiveWidget.isSmallScreen(context)
-            ? AppBar(title: const InkWell(child: Text(AppConstants.TITLE)))
-            : null, // Your app bar
-        // backgroundColor: const Color(0xff6ae792),
-        drawer: ResponsiveWidget.isSmallScreen(context) ? AppDrawer() : null,
-        body: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              // Top Header
-              if (ResponsiveWidget.isSmallScreen(context) == false)
-                Padding(
-                  padding:
-                      EdgeInsets.only(left: padding, top: 20, right: padding),
-                  child: HeaderWidget(),
-                ),
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      appBar: ResponsiveWidget.isSmallScreen(context)
+          ? AppBar(title: const InkWell(child: Text(AppConstants.TITLE)))
+          : null, // Your app bar
+      // backgroundColor: const Color(0xff6ae792),
+      drawer: ResponsiveWidget.isSmallScreen(context) ? AppDrawer() : null,
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            // Top Header
+            if (ResponsiveWidget.isSmallScreen(context) == false)
               Padding(
-                padding: EdgeInsets.only(left: padding, top: 0, right: padding),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                padding:
+                    EdgeInsets.only(left: padding, top: 20, right: padding),
+                child: HeaderWidget(),
+              ),
+            SizedBox(
+                height: 600,
+                child: Stack(
+                  fit: StackFit.expand,
                   children: <Widget>[
-                    LeftDescription(),
+                    addBackground(
+                        "assets/images/home_page1.png", Alignment.centerRight),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: padding, top: 0, right: padding),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          LeftDescription(),
+                        ],
+                      ),
+                    )
                   ],
-                ),
-              ),
-              SizedBox(
-                height: 100,
-              ),
-            ],
-          ),
+                )),
+            Container(
+                height: 600,
+                width: double.infinity,
+                child: Center(child: Text("Another section")),
+                decoration: BoxDecoration(color: Colors.lightGreen)),
+            FooterComponent()
+          ],
         ),
       ),
     );
+  }
+
+  //Adds background Image
+  Widget addBackground(String assetImg, Alignment alignment) {
+    return FractionallySizedBox(
+        alignment: alignment, //to keep images aligned to right
+        widthFactor: .6, //covers about 60% of the screen width
+        child: Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+          image: AssetImage(assetImg),
+        ))));
   }
 }
