@@ -164,6 +164,12 @@ class _MidHomeAnimationWidgetState extends State<MidHomeAnimationWidget> {
                               aspectRatio: 1),
                           items: widget.homePageImages
                               .map((assetName) => Container(
+                                  child: Center(
+                                    child: Text(
+                                      "BLA",
+                                      style: TextStyle(color: Colors.red),
+                                    ),
+                                  ),
                                   decoration: BoxDecoration(
                                       image: DecorationImage(
                                           image: AssetImage(assetName)))))
