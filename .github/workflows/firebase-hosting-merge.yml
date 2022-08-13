@@ -20,5 +20,5 @@ jobs:
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_IMMOCROWD_49E21 }}'
-          channelId: beta01
+          channelId: beta-immocrowd-49e21
           projectId: immocrowd-49e21

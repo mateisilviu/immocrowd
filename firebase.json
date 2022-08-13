@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "beta-immocrowd-49e21",
     "public": "build/web",
     "headers": [
       {
