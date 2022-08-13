@@ -15,9 +15,9 @@ class HomeScreen extends StatelessWidget {
   static String routeName = '/';
 
   var homePageImages = [
-    '/images/homepage/apartment_600.jpg',
-    '/images/homepage/commercial_600.jpg',
-    '/images/homepage/parking_600.jpg',
+    Image.asset('/images/homepage/apartment_600.jpg'),
+    Image.asset('/images/homepage/commercial_600.jpg'),
+    Image.asset('/images/homepage/parking_600.jpg'),
   ];
 
   @override
@@ -93,7 +93,7 @@ class MidHomeAnimationWidget extends StatefulWidget {
   }) : super(key: key);
 
   final double padding;
-  final List<String> homePageImages;
+  final List<Image> homePageImages;
 
   @override
   State<MidHomeAnimationWidget> createState() => _MidHomeAnimationWidgetState();
@@ -162,18 +162,18 @@ class _MidHomeAnimationWidgetState extends State<MidHomeAnimationWidget> {
                               viewportFraction: 1.0,
                               autoPlay: false,
                               aspectRatio: 1),
-                          items: widget.homePageImages
-                              .map((assetName) => Container(
-                                  child: Center(
-                                    child: Text(
-                                      "BLA",
-                                      style: TextStyle(color: Colors.red),
-                                    ),
-                                  ),
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: AssetImage(assetName)))))
-                              .toList(),
+                          items: widget.homePageImages,
+                          // .map((assetName) => Container(
+                          //     child: Center(
+                          //       child: Text(
+                          //         "BLA",
+                          //         style: TextStyle(color: Colors.red),
+                          //       ),
+                          //     ),
+                          //     decoration: BoxDecoration(
+                          //         image: DecorationImage(
+                          //             image: AssetImage(assetName)))))
+                          // .toList(),
                         ),
                       )
                     ],
