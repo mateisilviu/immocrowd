@@ -15,9 +15,12 @@ class HomeScreen extends StatelessWidget {
   static String routeName = '/';
 
   var homePageImages = [
-    Image.asset('/images/homepage/apartment_600.jpg'),
-    Image.asset('/images/homepage/commercial_600.jpg'),
-    Image.asset('/images/homepage/parking_600.jpg'),
+    Image.network(
+        'https://firebasestorage.googleapis.com/v0/b/immocrowd-49e21.appspot.com/o/homepage%2Fapartmanet_600.jpg?alt=media&token=aa408dcf-0982-410c-b9b4-b9b98a3dea8e'),
+    Image.network(
+        'https://firebasestorage.googleapis.com/v0/b/immocrowd-49e21.appspot.com/o/homepage%2Fmage_600.jpg?alt=media&token=f349a593-7bf9-4ae3-89fa-eb17d3da5968'),
+    Image.network(
+        'https://firebasestorage.googleapis.com/v0/b/immocrowd-49e21.appspot.com/o/homepage%2Fparking_600.jpg?alt=media&token=a8cc0847-15f3-4765-8267-53f40e26bf84'),
   ];
 
   @override
