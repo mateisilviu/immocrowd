@@ -56,6 +56,7 @@ dependencies:
   charts_flutter: ^0.12.0
   scrollable_list_tabview: ^0.2.0-nullsafety
   footer: ^0.0.4
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:

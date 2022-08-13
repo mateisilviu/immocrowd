@@ -1,3 +1,5 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/util/app-constants.dart';
@@ -8,9 +10,15 @@ import '../widgets/general/left_description.dart';
 import '../widgets/user/app_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
 
   static String routeName = '/';
+
+  var homePageImages = [
+    '/images/homepage/apartment_600.jpg',
+    '/images/homepage/commercial_600.jpg',
+    '/images/homepage/parking_600.jpg',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +60,11 @@ class HomeScreen extends StatelessWidget {
                     )
                   ],
                 )),
-            Container(
-                height: 600,
-                width: double.infinity,
-                child: Center(child: Text("Another section")),
-                decoration: BoxDecoration(color: Colors.lightGreen)),
+            SizedBox(
+              height: 50,
+            ),
+            MidHomeAnimationWidget(
+                padding: padding, homePageImages: homePageImages),
             FooterComponent()
           ],
         ),
@@ -74,5 +82,100 @@ class HomeScreen extends StatelessWidget {
                 image: DecorationImage(
           image: AssetImage(assetImg),
         ))));
+  }
+}
+
+class MidHomeAnimationWidget extends StatefulWidget {
+  const MidHomeAnimationWidget({
+    Key? key,
+    required this.padding,
+    required this.homePageImages,
+  }) : super(key: key);
+
+  final double padding;
+  final List<String> homePageImages;
+
+  @override
+  State<MidHomeAnimationWidget> createState() => _MidHomeAnimationWidgetState();
+}
+
+class _MidHomeAnimationWidgetState extends State<MidHomeAnimationWidget> {
+  int _current = 0;
+  final CarouselController _controller = CarouselController();
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        height: 600,
+        child: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(
+                  left: widget.padding, top: 0, right: widget.padding),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Column(
+                    children: [
+                      Container(
+                        width: 1000,
+                        height: 600,
+                        //decoration: BoxDecoration(color: Colors.amber),
+                        child: Row(
+                          children: [
+                            Text(
+                              "Build your real estate portofolio with ",
+                              style: TextStyle(fontSize: 38),
+                            ),
+                            AnimatedTextKit(
+                                onNext: (next, variable) =>
+                                    {_controller.animateToPage(next)},
+                                repeatForever: true,
+                                animatedTexts: [
+                                  ScaleAnimatedText('a parking space',
+                                      textStyle: TextStyle(fontSize: 38),
+                                      duration: Duration(seconds: 3)),
+                                  ScaleAnimatedText('a rented apartment',
+                                      duration: Duration(seconds: 3),
+                                      textStyle: TextStyle(fontSize: 38)),
+                                  ScaleAnimatedText('a comercial place',
+                                      duration: Duration(seconds: 3),
+                                      textStyle: TextStyle(fontSize: 38)),
+                                ])
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        width: 600,
+                        height: 600,
+                        child: CarouselSlider(
+                          carouselController: _controller,
+                          options: CarouselOptions(
+                              pauseAutoPlayOnManualNavigate: false,
+                              pauseAutoPlayOnTouch: false,
+                              viewportFraction: 1.0,
+                              autoPlay: false,
+                              aspectRatio: 1),
+                          items: widget.homePageImages
+                              .map((assetName) => Container(
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(assetName)))))
+                              .toList(),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ));
   }
 }
