@@ -28,6 +28,8 @@ void main() async {
   runApp(MyApp());
 }
 
+final navigatorKey = GlobalKey<NavigatorState>();
+
 class MyApp extends StatelessWidget {
   MaterialColor createMaterialColor(Color color) {
     List strengths = <double>[.05];
@@ -64,6 +66,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: createMaterialColor(Color(DesignConstants.GREEN)),
             //: : Colors.deepOrange,
           ),
+          navigatorKey: navigatorKey,
           home: HomeScreen(),
           onGenerateRoute: RouteGenerator.generateRoute,
           initialRoute: '/',
@@ -71,25 +74,26 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class AuthWrapper extends StatelessWidget {
-  const AuthWrapper({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      if (user == null) {
-        print('User is currently signed out!');
-      } else {
-        print('User is signed in!');
-      }
-    });
+// class AuthWrapper extends StatelessWidget {
+//   const AuthWrapper({Key? key}) : super(key: key);
 
-    var firebaseUser = FirebaseAuth.instance.currentUser;
-    if (firebaseUser != null) {
-      print("firebaseUser " + firebaseUser.uid);
-      return const ViewPropertiesScreen();
-    }
-    print("firebaseUser null");
-    return const ViewPropertiesScreen();
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     FirebaseAuth.instance.authStateChanges().listen((User? user) {
+//       if (user == null) {
+//         print('User is currently signed out!');
+//       } else {
+//         print('User is signed in!');
+//       }
+//     });
+
+//     var firebaseUser = FirebaseAuth.instance.currentUser;
+//     if (firebaseUser != null) {
+//       print("firebaseUser " + firebaseUser.uid);
+//       return const ViewPropertiesScreen();
+//     }
+//     print("firebaseUser null");
+//     return const ViewPropertiesScreen();
+//   }
+// }

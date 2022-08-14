@@ -16,10 +16,10 @@ import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
-import '../../auth.dart';
 import '../../core/models/property.dart';
 import '../../core/providers/properties-provider.dart';
 import '../widgets/user/app_drawer.dart';
+import 'login/auth_screen.dart';
 
 class ManagePropertiesScreen extends StatefulWidget {
   static const routeName = '/manage-properties';
@@ -346,7 +346,7 @@ class _ManagePropertiesScreenState extends State<ManagePropertiesScreen> {
     return FirebaseAuth.instance.currentUser == null
         ? TextButton(
             onPressed: () => {
-              Navigator.of(context).pushReplacementNamed(AuthGate.routeName)
+              Navigator.of(context).pushReplacementNamed(AuthScreen.routeName)
             },
             child: const Text('Please sign in or register.'),
           )

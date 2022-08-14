@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'auth.dart';
 import 'ui/screens/home_screen.dart';
-import 'ui/screens/login/login_email_password_screen.dart';
-import 'ui/screens/login/signup_email_password_screen.dart';
+import 'ui/screens/login/auth_screen.dart';
+import 'ui/screens/login/forgot_password_screen.dart';
+import 'ui/screens/login/verify_email_screen.dart';
 import 'ui/screens/manage_properties_screen.dart';
 import 'ui/screens/property_detail_screen.dart';
 import 'ui/screens/property_details_screen.dart';
@@ -23,17 +23,17 @@ class RouteGenerator {
           builder: (context) => PropertyDetailScreen(),
           settings: settings,
         );
-      case AuthGate.routeName:
-        return MaterialPageRoute(builder: (context) => AuthGate());
       case ProfilePage.routeName:
         return MaterialPageRoute(builder: (context) => ProfilePage());
       case ManagePropertiesScreen.routeName:
         return MaterialPageRoute(
             builder: (context) => ManagePropertiesScreen());
-      case EmailPasswordLogin.routeName:
-        return MaterialPageRoute(builder: (context) => EmailPasswordLogin());
-      case EmailPasswordSignup.routeName:
-        return MaterialPageRoute(builder: (context) => EmailPasswordSignup());
+      case AuthScreen.routeName:
+        return MaterialPageRoute(builder: (context) => AuthScreen());
+      case ForgotPasswordScreen.routeName:
+        return MaterialPageRoute(builder: (context) => ForgotPasswordScreen());
+      case VerifyEmailScreen.routeName:
+        return MaterialPageRoute(builder: (context) => VerifyEmailScreen());
       case ViewPropertiesScreen.routeName:
         return MaterialPageRoute(builder: (context) => ViewPropertiesScreen());
       case '/':
