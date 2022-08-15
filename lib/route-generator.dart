@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'ui/screens/home_screen.dart';
 import 'ui/screens/login/auth_screen.dart';
 import 'ui/screens/login/forgot_password_screen.dart';
+import 'ui/screens/login/login_screen.dart';
+import 'ui/screens/login/signup_screen.dart';
 import 'ui/screens/login/verify_email_screen.dart';
 import 'ui/screens/manage_properties_screen.dart';
 import 'ui/screens/property_detail_screen.dart';
@@ -24,22 +26,55 @@ class RouteGenerator {
           settings: settings,
         );
       case ProfilePage.routeName:
-        return MaterialPageRoute(builder: (context) => ProfilePage());
+        return MaterialPageRoute(
+          builder: (context) => ProfilePage(),
+          settings: settings,
+        );
       case ManagePropertiesScreen.routeName:
         return MaterialPageRoute(
-            builder: (context) => ManagePropertiesScreen());
+          builder: (context) => ManagePropertiesScreen(),
+          settings: settings,
+        );
       case AuthScreen.routeName:
-        return MaterialPageRoute(builder: (context) => AuthScreen());
+        return MaterialPageRoute(
+          builder: (context) => AuthScreen(),
+          settings: settings,
+        );
+      case LoginScreen.routeName:
+        return MaterialPageRoute(
+          builder: (context) => const LoginScreen(),
+          settings: settings,
+        );
+      case SignUpScreen.routeName:
+        return MaterialPageRoute(
+          builder: (context) => const SignUpScreen(),
+          settings: settings,
+        );
       case ForgotPasswordScreen.routeName:
-        return MaterialPageRoute(builder: (context) => ForgotPasswordScreen());
+        return MaterialPageRoute(
+          builder: (context) => ForgotPasswordScreen(),
+          settings: settings,
+        );
       case VerifyEmailScreen.routeName:
-        return MaterialPageRoute(builder: (context) => VerifyEmailScreen());
+        return MaterialPageRoute(
+          builder: (context) => VerifyEmailScreen(),
+          settings: settings,
+        );
       case ViewPropertiesScreen.routeName:
-        return MaterialPageRoute(builder: (context) => ViewPropertiesScreen());
+        return MaterialPageRoute(
+          builder: (context) => ViewPropertiesScreen(),
+          settings: settings,
+        );
       case '/':
-        return MaterialPageRoute(builder: (context) => HomeScreen());
+        return MaterialPageRoute(
+          builder: (context) => HomeScreen(),
+          settings: settings,
+        );
       default:
-        return MaterialPageRoute(builder: (context) => HomeScreen());
+        return MaterialPageRoute(
+          builder: (context) => HomeScreen(),
+          settings: settings,
+        );
     }
   }
 }

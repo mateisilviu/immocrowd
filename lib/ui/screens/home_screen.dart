@@ -28,21 +28,19 @@ class HomeScreen extends StatelessWidget {
     var padding = ResponsiveWidget.calculatePadding_20_100_150(context);
     return Scaffold(
       backgroundColor: Colors.transparent,
-      appBar: ResponsiveWidget.isSmallScreen(context)
-          ? AppBar(title: const InkWell(child: Text(AppConstants.TITLE)))
-          : null, // Your app bar
+      appBar: HeaderWidget(), // Your app bar
       // backgroundColor: const Color(0xff6ae792),
       drawer: ResponsiveWidget.isSmallScreen(context) ? AppDrawer() : null,
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             // Top Header
-            if (ResponsiveWidget.isSmallScreen(context) == false)
+            /* if (ResponsiveWidget.isSmallScreen(context) == false)
               Padding(
                 padding:
                     EdgeInsets.only(left: padding, top: 20, right: padding),
                 child: HeaderWidget(),
-              ),
+              ),*/
             SizedBox(
                 height: 600,
                 child: Stack(

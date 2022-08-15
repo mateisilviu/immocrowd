@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/util/showSnackbar.dart';
+import '../../widgets/general/footer/footer.dart';
+import '../../widgets/general/header.dart';
 import '../home_screen.dart';
 
 class VerifyEmailScreen extends StatefulWidget {
@@ -22,7 +24,11 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
     super.initState();
 
     /// user needs to be created before!
-    isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
+    if (FirebaseAuth.instance.currentUser == null) {
+      isEmailVerified = true;
+    } else {
+      isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
+    }
 
     if (!isEmailVerified) {
       sendVerificationEmail();
@@ -66,47 +72,47 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => isEmailVerified
-      ? HomeScreen()
-      : Scaffold(
-          appBar: AppBar(
-            title: Text('Verify Email'),
+  Widget build(BuildContext context) => Scaffold(
+        appBar: HeaderWidget(),
+        body: Padding(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'A verification email has been sent to your email.',
+                style: TextStyle(fontSize: 20),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 24),
+              ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size.fromHeight(50),
+                ),
+                icon: Icon(Icons.email, size: 32),
+                label: Text(
+                  'Resent Email',
+                  style: TextStyle(fontSize: 24),
+                ),
+                onPressed: canResendEmail ? sendVerificationEmail : null,
+              ),
+              SizedBox(height: 8),
+              TextButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size.fromHeight(50),
+                ),
+                child: Text(
+                  'Cancel',
+                  style: TextStyle(fontSize: 24),
+                ),
+                onPressed: () => FirebaseAuth.instance.signOut(),
+              ),
+              SizedBox(
+                height: 100,
+              ),
+              FooterComponent(),
+            ],
           ),
-          body: Padding(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'A verification email has been sent to your email.',
-                  style: TextStyle(fontSize: 20),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: 24),
-                ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size.fromHeight(50),
-                  ),
-                  icon: Icon(Icons.email, size: 32),
-                  label: Text(
-                    'Resent Email',
-                    style: TextStyle(fontSize: 24),
-                  ),
-                  onPressed: canResendEmail ? sendVerificationEmail : null,
-                ),
-                SizedBox(height: 8),
-                TextButton(
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size.fromHeight(50),
-                  ),
-                  child: Text(
-                    'Cancel',
-                    style: TextStyle(fontSize: 24),
-                  ),
-                  onPressed: () => FirebaseAuth.instance.signOut(),
-                ),
-              ],
-            ),
-          ),
-        );
+        ),
+      );
 }
