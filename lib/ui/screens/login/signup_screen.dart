@@ -23,12 +23,16 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final formKey = GlobalKey<FormState>();
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
 
   @override
   void dispose() {
+    firstNameController.dispose();
+    lastNameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
@@ -55,15 +59,37 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         FlutterLogo(size: 120),
                         SizedBox(height: 20),
                         Text(
-                          'Hey There,\n Welcome Back',
+                          'Hey There ${firstNameController.text} ${lastNameController.text},\n Happy to have you on this platform',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 32, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: 40),
                         TextFormField(
+                          controller: firstNameController,
+                          //  cursorColor: Colors.white,
+                          textInputAction: TextInputAction.next,
+                          decoration: InputDecoration(labelText: 'First name'),
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: (firstName) =>
+                              firstName != null && firstName.length < 2
+                                  ? 'Enter min 2 characters'
+                                  : null,
+                        ),
+                        TextFormField(
+                          controller: lastNameController,
+                          //  cursorColor: Colors.white,
+                          textInputAction: TextInputAction.next,
+                          decoration: InputDecoration(labelText: 'Last name'),
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: (lastName) =>
+                              lastName != null && lastName.length < 2
+                                  ? 'Enter min 2 characters'
+                                  : null,
+                        ),
+                        TextFormField(
                           controller: emailController,
-                          cursorColor: Colors.white,
+                          //  cursorColor: Colors.white,
                           textInputAction: TextInputAction.next,
                           decoration: InputDecoration(labelText: 'Email'),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -155,10 +181,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
 
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim(),
+          )
+          .then((result) => result.user!.updateDisplayName(
+              firstNameController.text + " " + lastNameController.text));
     } on FirebaseAuthException catch (e) {
       print(e);
 

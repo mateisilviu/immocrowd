@@ -1,12 +1,15 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:immocrowd/ui/screens/view_properties.dart';
 
 import '../../../core/util/showSnackbar.dart';
 import '../../widgets/general/footer/footer.dart';
 import '../../widgets/general/header.dart';
 import '../home_screen.dart';
+import 'login_screen.dart';
 
 class VerifyEmailScreen extends StatefulWidget {
   static const String routeName = '/verify-email';
@@ -72,47 +75,84 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: HeaderWidget(),
-        body: Padding(
-          padding: EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'A verification email has been sent to your email.',
-                style: TextStyle(fontSize: 20),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 24),
-              ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size.fromHeight(50),
+  Widget build(BuildContext context) {
+    var currentUser = FirebaseAuth.instance.currentUser;
+    return Scaffold(
+      appBar: HeaderWidget(),
+      body: currentUser == null
+          ? _buildCenterText(context, 'You are not logged in, please ',
+              'Log in', LoginScreen.routeName)
+          : isEmailVerified
+              ? _buildCenterText(
+                  context,
+                  'Thank you! Your are email is verified.',
+                  'Browse active oportunities ',
+                  ViewPropertiesScreen.routeName)
+              : Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Hello ${currentUser.displayName}. A verification email has been sent to your email.',
+                        style: TextStyle(fontSize: 20),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: 24),
+                      ElevatedButton.icon(
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(150, 50),
+                        ),
+                        icon: Icon(Icons.email, size: 32),
+                        label: Text(
+                          'Resent Email',
+                          style: TextStyle(fontSize: 24),
+                        ),
+                        onPressed:
+                            canResendEmail ? sendVerificationEmail : null,
+                      ),
+                      SizedBox(height: 8),
+                      TextButton(
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(150, 50),
+                        ),
+                        child: Text(
+                          'Cancel',
+                          style: TextStyle(fontSize: 24),
+                        ),
+                        onPressed: () => FirebaseAuth.instance.signOut(),
+                      ),
+                      SizedBox(
+                        height: 100,
+                      ),
+                      FooterComponent(),
+                    ],
+                  ),
                 ),
-                icon: Icon(Icons.email, size: 32),
-                label: Text(
-                  'Resent Email',
-                  style: TextStyle(fontSize: 24),
-                ),
-                onPressed: canResendEmail ? sendVerificationEmail : null,
+    );
+  }
+
+  Widget _buildCenterText(
+      BuildContext context, String text1, String text2, String routeName) {
+    return Center(
+      child: RichText(
+        text: TextSpan(
+          style: TextStyle(fontSize: 20),
+          text: text1,
+          children: [
+            TextSpan(
+              recognizer: TapGestureRecognizer()
+                ..onTap = () =>
+                    {Navigator.of(context).pushReplacementNamed(routeName)},
+              text: text2,
+              style: TextStyle(
+                decoration: TextDecoration.underline,
+                color: Theme.of(context).colorScheme.secondary,
               ),
-              SizedBox(height: 8),
-              TextButton(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size.fromHeight(50),
-                ),
-                child: Text(
-                  'Cancel',
-                  style: TextStyle(fontSize: 24),
-                ),
-                onPressed: () => FirebaseAuth.instance.signOut(),
-              ),
-              SizedBox(
-                height: 100,
-              ),
-              FooterComponent(),
-            ],
-          ),
+            ),
+          ],
         ),
-      );
+      ),
+    );
+  }
 }

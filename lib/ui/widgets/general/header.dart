@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:immocrowd/core/util/design-constants.dart';
 import 'package:immocrowd/core/util/responsive.dart';
 import 'package:immocrowd/ui/screens/login/auth_screen.dart';
 import 'package:immocrowd/ui/screens/login/login_screen.dart';
@@ -12,6 +14,7 @@ class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     var padding = ResponsiveWidget.calculatePadding_20_100_150(context);
+    var currentUser = FirebaseAuth.instance.currentUser;
     return ResponsiveWidget.isSmallScreen(context)
         ? AppBar(title: const InkWell(child: Text(AppConstants.TITLE)))
         : PreferredSize(
@@ -69,27 +72,10 @@ class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
                           style: ResponsiveWidget.calculateTextStyle(context),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: OutlinedButton(
-                            style: ButtonStyle(
-                                foregroundColor:
-                                    MaterialStateProperty.all(Colors.black)),
-                            onPressed: () => {
-                                  Navigator.of(context)
-                                      .pushNamed(LoginScreen.routeName)
-                                },
-                            child: Text('Login')),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ElevatedButton(
-                            onPressed: () => {
-                                  Navigator.of(context)
-                                      .pushNamed(SignUpScreen.routeName)
-                                },
-                            child: Text('Sign up')),
-                      )
+                      if (currentUser == null)
+                        ..._createLoginSignInButtons(context)
+                      else
+                        _createProfile(context)
                     ],
                   )
                 ],
@@ -101,4 +87,35 @@ class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
   @override
   // TODO: implement preferredSize
   Size get preferredSize => Size(double.infinity, 50);
+
+  List<Widget> _createLoginSignInButtons(BuildContext context) {
+    return [
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: OutlinedButton(
+            style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all(Colors.black)),
+            onPressed: () =>
+                {Navigator.of(context).pushNamed(LoginScreen.routeName)},
+            child: Text('Login')),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ElevatedButton(
+            onPressed: () =>
+                {Navigator.of(context).pushNamed(SignUpScreen.routeName)},
+            child: Text('Sign up')),
+      )
+    ];
+  }
+
+  Widget _createProfile(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: CircleAvatar(
+        backgroundColor: Color(DesignConstants.GREEN),
+        radius: 20,
+      ),
+    );
+  }
 }

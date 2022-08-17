@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:immocrowd/core/util/app-constants.dart';
+import 'package:immocrowd/ui/widgets/general/header.dart';
 
 import '../../core/util/responsive.dart';
 import '../widgets/user/app_drawer.dart';
@@ -33,26 +34,7 @@ class _ViewPropertiesScreenState extends State<ViewPropertiesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: InkWell(
-            child: Text(AppConstants.TITLE),
-            onTap: () => {
-              Navigator.of(context).pushReplacementNamed(HomeScreen.routeName)
-            },
-          ),
-          actions: <Widget>[
-            Padding(
-                padding: EdgeInsets.only(right: 20.0),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pushNamed(ProfilePage.routeName);
-                  },
-                  child: Icon(
-                    Icons.person,
-                    size: 26.0,
-                  ),
-                ))
-          ]),
+      appBar: HeaderWidget(),
       drawer: ResponsiveWidget.isSmallScreen(context) ? AppDrawer() : null,
       body: _isLoading
           ? Center(
