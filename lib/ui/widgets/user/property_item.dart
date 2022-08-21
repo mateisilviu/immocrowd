@@ -21,7 +21,7 @@ class PropertyItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           CarouselSlider(
-            options: CarouselOptions(),
+            options: CarouselOptions(viewportFraction: 1.0, autoPlay: true),
             items: item.photo
                 .map((item) => Container(
                       child: Center(

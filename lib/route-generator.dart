@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'ui/screens/home_screen.dart';
+import 'ui/screens/howto/howto_screen.dart';
 import 'ui/screens/login/auth_screen.dart';
 import 'ui/screens/login/forgot_password_screen.dart';
 import 'ui/screens/login/login_screen.dart';
@@ -15,6 +16,11 @@ import 'ui/widgets/user/profile.dart';
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case HowToScreen.routeName:
+        return MaterialPageRoute(
+          builder: (context) => HowToScreen(),
+          settings: settings,
+        );
       case PropertyDetailsScreen.routeName:
         return MaterialPageRoute(
           builder: (context) => PropertyDetailsScreen(),

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:footer/footer.dart';
-import 'package:footer/footer_view.dart';
 import 'package:immocrowd/core/util/design-constants.dart';
 
-import 'menu.dart';
+import '../../../screens/howto/howto_screen.dart';
 import 'social-links.dart';
 
 class FooterComponent extends StatelessWidget {
@@ -41,9 +39,16 @@ class FooterComponent extends StatelessWidget {
                             child: Text("Active opportunities"),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(5),
-                            child: Text("How it works?"),
-                          ),
+                              padding: EdgeInsets.all(5),
+                              child: InkWell(
+                                onTap: () => {
+                                  Navigator.of(context).pushReplacementNamed(
+                                      HowToScreen.routeName)
+                                },
+                                child: Text(
+                                  'How it works.',
+                                ),
+                              )),
                           Padding(
                             padding: EdgeInsets.all(5),
                             child: Text("Statistics"),

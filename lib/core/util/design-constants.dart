@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 class DesignConstants {
   static int GREEN = 0xff97f9e3;
+  static const int LIGHT_GREEN = 0xffc1fbee;
   static int BLACK_BLUE = 0xff28313b;
+
+  static const Color lightGreenColor = Color(LIGHT_GREEN);
 
   // orange fdb43cff , f47a11ff
 

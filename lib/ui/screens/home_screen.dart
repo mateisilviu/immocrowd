@@ -127,7 +127,7 @@ class _MidHomeAnimationWidgetState extends State<MidHomeAnimationWidget> {
                         child: Row(
                           children: [
                             Text(
-                              "Build your real estate portofolio with ",
+                              "Build your real estate portofolio with a rented ",
                               style: TextStyle(fontSize: 38),
                             ),
                             AnimatedTextKit(
@@ -135,13 +135,13 @@ class _MidHomeAnimationWidgetState extends State<MidHomeAnimationWidget> {
                                     {_controller.animateToPage(next)},
                                 repeatForever: true,
                                 animatedTexts: [
-                                  ScaleAnimatedText('a parking space',
+                                  ScaleAnimatedText('parking space',
                                       textStyle: TextStyle(fontSize: 38),
                                       duration: Duration(seconds: 3)),
-                                  ScaleAnimatedText('a rented apartment',
+                                  ScaleAnimatedText('apartment',
                                       duration: Duration(seconds: 3),
                                       textStyle: TextStyle(fontSize: 38)),
-                                  ScaleAnimatedText('a comercial place',
+                                  ScaleAnimatedText('comercial place',
                                       duration: Duration(seconds: 3),
                                       textStyle: TextStyle(fontSize: 38)),
                                 ])
