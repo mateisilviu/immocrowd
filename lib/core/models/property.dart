@@ -19,6 +19,7 @@ class Property {
   final String shortDescription;
   final String address;
   final List<String> photo;
+
   Timestamp createdAt = Timestamp.now();
   Timestamp modifiedAt = Timestamp.now();
 

@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'core/providers/properties-provider.dart';
 import 'firebase_options.dart';
 import 'route-generator.dart';
-import 'ui/screens/home_screen.dart';
+import 'ui/screens/home/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

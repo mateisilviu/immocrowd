@@ -6,7 +6,7 @@ import '../../core/util/responsive.dart';
 import '../widgets/user/app_drawer.dart';
 import '../widgets/user/profile.dart';
 import '../widgets/user/property_grid.dart';
-import 'home_screen.dart';
+import 'home/home_screen.dart';
 
 class ViewPropertiesScreen extends StatefulWidget {
   static const String routeName = '/view-properties';

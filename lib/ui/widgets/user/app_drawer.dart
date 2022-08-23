@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:immocrowd/ui/screens/howto/howto_screen.dart';
 import 'package:immocrowd/ui/screens/view_properties.dart';
 import 'package:provider/provider.dart';
 
@@ -29,6 +30,12 @@ class AppDrawer extends StatelessWidget {
       ),
       const ListTile(
           leading: Icon(Icons.rss_feed), title: Text('Blog'), onTap: null),
+      ListTile(
+          leading: Icon(Icons.question_mark),
+          title: Text('How it works'),
+          onTap: () {
+            Navigator.of(context).pushReplacementNamed(HowToScreen.routeName);
+          }),
       const ListTile(
           leading: Icon(Icons.question_mark), title: Text('FAQ'), onTap: null),
       const ListTile(

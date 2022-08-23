@@ -9,6 +9,7 @@ import 'package:immocrowd/ui/screens/login/signup_screen.dart';
 import 'package:immocrowd/ui/screens/view_properties.dart';
 
 import '../../../core/util/app-constants.dart';
+import 'appbar/login-buttons.dart';
 
 class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
   HeaderWidget({this.title = AppConstants.TITLE});
@@ -102,7 +103,7 @@ class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
                               ),
                             ),
                             if (currentUser == null)
-                              ..._createLoginSignInButtons(context)
+                              ...createLoginSignInButtons(context)
                             else
                               _createProfile(context)
                           ],
@@ -123,27 +124,6 @@ class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
   @override
   // TODO: implement preferredSize
   Size get preferredSize => Size(double.infinity, 50);
-
-  List<Widget> _createLoginSignInButtons(BuildContext context) {
-    return [
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: OutlinedButton(
-            style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all(Colors.black)),
-            onPressed: () =>
-                {Navigator.of(context).pushNamed(LoginScreen.routeName)},
-            child: Text('Login')),
-      ),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ElevatedButton(
-            onPressed: () =>
-                {Navigator.of(context).pushNamed(SignUpScreen.routeName)},
-            child: Text('Sign up')),
-      )
-    ];
-  }
 
   Widget _createProfile(BuildContext context) {
     return Padding(

@@ -5,8 +5,10 @@ class SocialLinks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var horizontalPadding = MediaQuery.of(context).size.width;
     return Padding(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 300),
+        padding: EdgeInsets.symmetric(
+            vertical: 10, horizontal: horizontalPadding * 0.05),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Column(

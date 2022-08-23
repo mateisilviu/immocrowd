@@ -28,10 +28,10 @@ class ResponsiveWidget extends StatelessWidget {
 
   static double calculatePadding_20_100_150(BuildContext context) {
     return ResponsiveWidget.isSmallScreen(context)
-        ? 20.0
+        ? 10.0
         : ResponsiveWidget.isMediumScreen(context)
-            ? 100.0
-            : 150.0;
+            ? 70.0
+            : 100.0;
   }
 
   static TextStyle calculateTextStyle(BuildContext context,
