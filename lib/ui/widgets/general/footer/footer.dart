@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:immocrowd/core/util/design-constants.dart';
 import 'package:immocrowd/core/util/responsive.dart';
+import 'dart:html' as html;
 
 import '../../../screens/howto/howto_screen.dart';
 import 'social-links.dart';
@@ -141,7 +142,10 @@ class FooterComponent extends StatelessWidget {
       ),
       Padding(
         padding: EdgeInsets.all(5),
-        child: Text("Blog"),
+        child: InkWell(
+            onTap: () =>
+                {html.window.open("https://blog.immoequityfund.com/", "_self")},
+            child: Text("Blog")),
       ),
       Padding(
         padding: EdgeInsets.all(5),

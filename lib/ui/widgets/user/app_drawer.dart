@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:immocrowd/ui/screens/howto/howto_screen.dart';
 import 'package:immocrowd/ui/screens/view_properties.dart';
 import 'package:provider/provider.dart';
+import 'dart:html' as html;
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -28,8 +29,11 @@ class AppDrawer extends StatelessWidget {
               .pushReplacementNamed(ViewPropertiesScreen.routeName);
         },
       ),
-      const ListTile(
-          leading: Icon(Icons.rss_feed), title: Text('Blog'), onTap: null),
+      ListTile(
+          leading: Icon(Icons.rss_feed),
+          title: Text('Blog'),
+          onTap: () =>
+              {html.window.open("https://blog.immoequityfund.com/", "_self")}),
       ListTile(
           leading: Icon(Icons.question_mark),
           title: Text('How it works'),
