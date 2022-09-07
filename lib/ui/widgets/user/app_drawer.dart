@@ -24,11 +24,12 @@ class AppDrawer extends StatelessWidget {
             currentAccountPicture: CircleAvatar(
                 radius: 48,
                 backgroundColor: Colors.white,
-                child: Image.asset("images/drawer/avatar_90.gif")))
+                child: Image(
+                    image: AssetImage("assets/images/drawer/avatar_90.gif"))))
       else
         ...buildLoginSingInButtons(context),
       ListTile(
-        leading: Image.asset("images/drawer/home.gif"),
+        leading: Image.asset("assets/images/drawer/home.gif"),
         title: const Text('Home'),
         onTap: () {
           Navigator.of(context).pushReplacementNamed('/');
@@ -37,7 +38,8 @@ class AppDrawer extends StatelessWidget {
       //firebaseUser != null
       // ?
       ListTile(
-        leading: Image.asset("images/drawer/view_properties.gif"),
+        leading: const Image(
+            image: AssetImage('assets/images/drawer/view_properties.gif')),
         title: const Text('View Properties'),
         onTap: () {
           Navigator.of(context)
