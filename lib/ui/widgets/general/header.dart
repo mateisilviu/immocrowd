@@ -136,11 +136,56 @@ class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
 
   Widget _createProfile(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: CircleAvatar(
-        backgroundColor: Color(DesignConstants.GREEN),
-        radius: 20,
-      ),
-    );
+        padding: const EdgeInsets.all(8.0),
+        child: CircleAvatar(
+          backgroundColor: Colors.white,
+          radius: 20,
+          child: PopupMenuButton<Menu>(
+              icon: Image.asset("images/profile/avatar_32.gif"),
+              tooltip: "Profile",
+              position: PopupMenuPosition.under,
+              // Callback that sets the selected popup menu item.
+              onSelected: (Menu item) {
+                // setState(() {
+                //   _selectedMenu = item.name;
+                // });
+              },
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<Menu>>[
+                    PopupMenuItem<Menu>(
+                      value: Menu.itemOne,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Image.asset("images/profile/settings.gif"),
+                          Text('Settings'),
+                        ],
+                      ),
+                    ),
+                    PopupMenuItem<Menu>(
+                      value: Menu.itemThree,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Image.asset("images/profile/portofolio.gif"),
+                          Text('Portofolio'),
+                        ],
+                      ),
+                    ),
+                    PopupMenuDivider(),
+                    PopupMenuItem<Menu>(
+                      value: Menu.itemThree,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Image.asset("images/profile/logout.gif"),
+                          Text('Logout'),
+                        ],
+                      ),
+                    ),
+                  ]),
+        ));
   }
 }
+
+// This is the type used by the popup menu below.
+enum Menu { itemOne, itemTwo, itemThree, itemFour }
