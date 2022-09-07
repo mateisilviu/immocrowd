@@ -102,7 +102,7 @@ class _ManagePropertiesScreenState extends State<ManagePropertiesScreen> {
           title: Text('Success!'),
           content: Text('Added Succesfully'),
           actions: <Widget>[
-            FlatButton(
+            ElevatedButton(
               child: Text('OK'),
               onPressed: () {
                 setState(() {
@@ -130,7 +130,7 @@ class _ManagePropertiesScreenState extends State<ManagePropertiesScreen> {
           title: Text('An error occurred!'),
           content: Text('Something went wrong.'),
           actions: <Widget>[
-            FlatButton(
+            ElevatedButton(
               child: Text('Okay'),
               onPressed: () {
                 setState(() {
