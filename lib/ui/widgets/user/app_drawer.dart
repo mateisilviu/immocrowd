@@ -27,45 +27,32 @@ class AppDrawer extends StatelessWidget {
                 child: Image(
                     image: AssetImage("assets/images/drawer/avatar_90.gif"))))
       else
-        ...buildLoginSingInButtons(context),
-      ListTile(
-        leading: Image.asset("assets/images/drawer/home.gif"),
-        title: const Text('Home'),
-        onTap: () {
-          Navigator.of(context).pushReplacementNamed('/');
-        },
-      ),
-      //firebaseUser != null
-      // ?
-      ListTile(
-        leading: const Image(
-            image: AssetImage('assets/images/drawer/view_properties.gif')),
-        title: const Text('View Properties'),
-        onTap: () {
-          Navigator.of(context)
-              .pushReplacementNamed(ViewPropertiesScreen.routeName);
-        },
-      ),
-      ListTile(
-          leading: Image.asset("images/drawer/blog.gif"),
-          title: Text('Blog'),
-          onTap: () =>
+        ..._buildLoginSingInButtons(context),
+      _buildCustomListTile('Home', 'assets/images/drawer/home_100.gif', () {
+        Navigator.of(context).pushReplacementNamed('/');
+      }),
+      _buildCustomListTile(
+          'View Properties', 'assets/images/drawer/view_properties_100.gif',
+          () {
+        Navigator.of(context)
+            .pushReplacementNamed(ViewPropertiesScreen.routeName);
+      }),
+      _buildCustomListTile(
+          'Blog',
+          'assets/images/drawer/blog_100.gif',
+          () =>
               {html.window.open("https://blog.immoequityfund.com/", "_self")}),
-      ListTile(
-          leading: Image.asset("images/drawer/how_it_works.gif"),
-          title: Text('How it works'),
-          onTap: () {
-            Navigator.of(context).pushReplacementNamed(HowToScreen.routeName);
-          }),
-      ListTile(
-          leading: Image.asset("images/drawer/faq.gif"),
-          title: Text('FAQ'),
-          onTap: null),
-      ListTile(
-          leading: Image.asset("images/drawer/about_us.gif"),
-          title: Text('About us'),
-          onTap: null),
-      if (firebaseUser != null) ...buildDividerAndLogout(context),
+      _buildCustomListTile(
+          'How it works',
+          'assets/images/drawer/how_it_works_100.gif',
+          () => {
+                Navigator.of(context)
+                    .pushReplacementNamed(HowToScreen.routeName)
+              }),
+      _buildCustomListTile('FAQ', 'assets/images/drawer/faq_100.gif', () => {}),
+      _buildCustomListTile(
+          'About us', 'assets/images/drawer/about_us_100.gif', () => {}),
+      if (firebaseUser != null) ..._buildDividerAndLogout(context),
       if (firebaseUser != null &&
           firebaseUser.email!.compareTo('tzevy.cont@gmail.com') == 0)
         const ListTile(
@@ -75,32 +62,47 @@ class AppDrawer extends StatelessWidget {
     ]));
   }
 
-  List<Widget> buildLoginSingInButtons(BuildContext context) {
+  Widget _buildCustomListTile(
+      String text, String imageAsset, VoidCallback onTapFunction) {
+    return Material(
+      child: InkWell(
+        onTap: onTapFunction,
+        highlightColor: Colors.black26,
+        child: Ink(
+          child: Row(
+            children: [
+              Expanded(
+                  child: Image(
+                      height: 100, width: 100, image: AssetImage(imageAsset))),
+              Expanded(
+                  child: Text(
+                text,
+                textScaleFactor: 2.0,
+              ))
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  List<Widget> _buildLoginSingInButtons(BuildContext context) {
     return [
-      ListTile(
-        leading: Image.asset("images/drawer/login.gif"),
-        title: const Text('Login'),
-        onTap: () {
-          Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
-        },
-      ),
-      ListTile(
-        leading: Image.asset("images/drawer/signup.gif"),
-        title: const Text('Sign Up'),
-        onTap: () {
-          Navigator.of(context).pushReplacementNamed(SignUpScreen.routeName);
-        },
-      ),
+      _buildCustomListTile('Login', 'assets/images/drawer/login_100.gif', () {
+        Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
+      }),
+      _buildCustomListTile('Sign Up', 'assets/images/drawer/signup_100.gif',
+          () {
+        Navigator.of(context).pushReplacementNamed(SignUpScreen.routeName);
+      })
     ];
   }
 
-  List<Widget> buildDividerAndLogout(BuildContext context) {
+  List<Widget> _buildDividerAndLogout(BuildContext context) {
     return [
       Divider(),
-      ListTile(
-          leading: Image.asset("images/profile/logout.gif"),
-          title: Text('Logout'),
-          onTap: null),
+      _buildCustomListTile(
+          'Logout', 'assets/images/drawer/logout_100.gif', () => {})
     ];
   }
 }
