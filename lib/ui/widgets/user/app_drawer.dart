@@ -13,53 +13,58 @@ class AppDrawer extends StatelessWidget {
     final firebaseUser = FirebaseAuth.instance.currentUser;
     print(firebaseUser);
     return Drawer(
-        child: Column(children: [
-      // AppBar(title: null, automaticallyImplyLeading: false),
-      if (firebaseUser != null)
-        UserAccountsDrawerHeader(
-            accountName: Text(firebaseUser.displayName ?? ""),
-            accountEmail: Text(firebaseUser.email ?? ""),
-            onDetailsPressed: () => Navigator.of(context)
-                .pushReplacementNamed(ViewPropertiesScreen.routeName),
-            currentAccountPicture: CircleAvatar(
-                radius: 48,
-                backgroundColor: Colors.white,
-                child: Image(
-                    image: AssetImage("assets/images/drawer/avatar_90.gif"))))
-      else
-        ..._buildLoginSingInButtons(context),
-      _buildCustomListTile('Home', 'assets/images/drawer/home_100.gif', () {
-        Navigator.of(context).pushReplacementNamed('/');
-      }),
-      _buildCustomListTile(
-          'View Properties', 'assets/images/drawer/view_properties_100.gif',
-          () {
-        Navigator.of(context)
-            .pushReplacementNamed(ViewPropertiesScreen.routeName);
-      }),
-      _buildCustomListTile(
-          'Blog',
-          'assets/images/drawer/blog_100.gif',
-          () =>
-              {html.window.open("https://blog.immoequityfund.com/", "_self")}),
-      _buildCustomListTile(
-          'How it works',
-          'assets/images/drawer/how_it_works_100.gif',
-          () => {
-                Navigator.of(context)
-                    .pushReplacementNamed(HowToScreen.routeName)
-              }),
-      _buildCustomListTile('FAQ', 'assets/images/drawer/faq_100.gif', () => {}),
-      _buildCustomListTile(
-          'About us', 'assets/images/drawer/about_us_100.gif', () => {}),
-      if (firebaseUser != null) ..._buildDividerAndLogout(context),
-      if (firebaseUser != null &&
-          firebaseUser.email!.compareTo('tzevy.cont@gmail.com') == 0)
-        const ListTile(
-            leading: Icon(Icons.group),
-            title: Text('Manage properties'),
-            onTap: null),
-    ]));
+        child: SingleChildScrollView(
+      primary: true,
+      child: Column(children: [
+        // AppBar(title: null, automaticallyImplyLeading: false),
+        if (firebaseUser != null)
+          UserAccountsDrawerHeader(
+              accountName: Text(firebaseUser.displayName ?? ""),
+              accountEmail: Text(firebaseUser.email ?? ""),
+              onDetailsPressed: () => Navigator.of(context)
+                  .pushReplacementNamed(ViewPropertiesScreen.routeName),
+              currentAccountPicture: CircleAvatar(
+                  radius: 48,
+                  backgroundColor: Colors.white,
+                  child: Image(
+                      image: AssetImage("assets/images/drawer/avatar_90.gif"))))
+        else
+          ..._buildLoginSingInButtons(context),
+        _buildCustomListTile('Home', 'assets/images/drawer/home_100.gif', () {
+          Navigator.of(context).pushReplacementNamed('/');
+        }),
+        _buildCustomListTile(
+            'View Properties', 'assets/images/drawer/view_properties_100.gif',
+            () {
+          Navigator.of(context)
+              .pushReplacementNamed(ViewPropertiesScreen.routeName);
+        }),
+        _buildCustomListTile(
+            'Blog',
+            'assets/images/drawer/blog_100.gif',
+            () => {
+                  html.window.open("https://blog.immoequityfund.com/", "_self")
+                }),
+        _buildCustomListTile(
+            'How it works',
+            'assets/images/drawer/how_it_works_100.gif',
+            () => {
+                  Navigator.of(context)
+                      .pushReplacementNamed(HowToScreen.routeName)
+                }),
+        _buildCustomListTile(
+            'FAQ', 'assets/images/drawer/faq_100.gif', () => {}),
+        _buildCustomListTile(
+            'About us', 'assets/images/drawer/about_us_100.gif', () => {}),
+        if (firebaseUser != null) ..._buildDividerAndLogout(context),
+        if (firebaseUser != null &&
+            firebaseUser.email!.compareTo('tzevy.cont@gmail.com') == 0)
+          const ListTile(
+              leading: Icon(Icons.group),
+              title: Text('Manage properties'),
+              onTap: null),
+      ]),
+    ));
   }
 
   Widget _buildCustomListTile(
