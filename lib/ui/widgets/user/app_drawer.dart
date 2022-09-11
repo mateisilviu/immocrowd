@@ -5,6 +5,7 @@ import 'package:immocrowd/ui/screens/login/login_screen.dart';
 import 'package:immocrowd/ui/screens/view_properties.dart';
 import 'dart:html' as html;
 
+import '../../screens/faq/faq_screen.dart';
 import '../../screens/login/signup_screen.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -53,7 +54,12 @@ class AppDrawer extends StatelessWidget {
                       .pushReplacementNamed(HowToScreen.routeName)
                 }),
         _buildCustomListTile(
-            'FAQ', 'assets/images/drawer/faq_100.gif', () => {}),
+            'FAQ',
+            'assets/images/drawer/faq_100.gif',
+            () => {
+                  Navigator.of(context)
+                      .pushReplacementNamed(FaqScreen.routeName)
+                }),
         _buildCustomListTile(
             'About us', 'assets/images/drawer/about_us_100.gif', () => {}),
         if (firebaseUser != null) ..._buildDividerAndLogout(context),
@@ -78,11 +84,11 @@ class AppDrawer extends StatelessWidget {
             children: [
               Expanded(
                   child: Image(
-                      height: 100, width: 100, image: AssetImage(imageAsset))),
+                      height: 70, width: 70, image: AssetImage(imageAsset))),
               Expanded(
                   child: Text(
                 text,
-                textScaleFactor: 2.0,
+                textScaleFactor: 1.7,
               ))
             ],
           ),

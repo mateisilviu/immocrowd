@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:immocrowd/core/util/design-constants.dart';
 import 'package:immocrowd/core/util/responsive.dart';
+import 'package:immocrowd/ui/screens/faq/faq_screen.dart';
 import 'dart:html' as html;
 
 import '../../../screens/howto/howto_screen.dart';
@@ -48,7 +49,7 @@ class FooterComponent extends StatelessWidget {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         //  crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [...buildCompany()],
+                        children: [...buildCompany(context)],
                       ),
                     ])),
             Divider(
@@ -122,7 +123,7 @@ class FooterComponent extends StatelessWidget {
     ];
   }
 
-  List<Widget> buildCompany() {
+  List<Widget> buildCompany(BuildContext context) {
     return [
       Padding(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
@@ -130,7 +131,12 @@ class FooterComponent extends StatelessWidget {
       ),
       Padding(
         padding: EdgeInsets.all(5),
-        child: Text("FAQ"),
+        child: InkWell(
+            onTap: () => {
+                  Navigator.of(context)
+                      .pushReplacementNamed(FaqScreen.routeName)
+                },
+            child: Text("FAQ")),
       ),
       Padding(
         padding: EdgeInsets.all(5),
@@ -168,7 +174,7 @@ class FooterComponent extends StatelessWidget {
         buildLogo(),
         ...buildMenu(context),
         ...buildInfo(),
-        ...buildCompany(),
+        ...buildCompany(context),
         Divider(
           height: 10,
           thickness: 5,

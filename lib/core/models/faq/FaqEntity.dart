@@ -1,0 +1,51 @@
+class FaqEntity {
+  final String question;
+  final String answer;
+
+  const FaqEntity({required this.question, required this.answer});
+
+  static const allFaqStatic = [
+    FaqEntity(question: "What is this platfomr", answer: "This platform is"),
+    FaqEntity(question: "What is crowndfunding", answer: "Crowdfunding is"),
+    FaqEntity(question: "What is SPV", answer: "SPV is"),
+    FaqEntity(question: "What is this platfomr", answer: "This platform is"),
+    FaqEntity(question: "What is crowndfunding", answer: "Crowdfunding is"),
+    FaqEntity(question: "What is SPV", answer: "SPV is"),
+    FaqEntity(question: "What is this platfomr", answer: "This platform is"),
+    FaqEntity(question: "What is crowndfunding", answer: "Crowdfunding is"),
+    FaqEntity(question: "What is SPV", answer: "SPV is"),
+    FaqEntity(question: "What is this platfomr", answer: "This platform is"),
+    FaqEntity(question: "What is crowndfunding", answer: "Crowdfunding is"),
+    FaqEntity(question: "What is SPV", answer: "SPV is"),
+    FaqEntity(question: "What is this platfomr", answer: "This platform is"),
+    FaqEntity(question: "What is crowndfunding", answer: "Crowdfunding is"),
+    FaqEntity(question: "What is SPV", answer: "SPV is"),
+    FaqEntity(question: "What is this platfomr", answer: "This platform is"),
+    FaqEntity(question: "What is crowndfunding", answer: "Crowdfunding is"),
+    FaqEntity(question: "What is SPV", answer: "SPV is"),
+    FaqEntity(question: "What is this platfomr", answer: "This platform is"),
+    FaqEntity(question: "What is crowndfunding", answer: "Crowdfunding is"),
+    FaqEntity(question: "What is SPV", answer: "SPV is"),
+    FaqEntity(question: "What is this platfomr", answer: "This platform is"),
+    FaqEntity(question: "What is crowndfunding", answer: "Crowdfunding is"),
+    FaqEntity(question: "What is SPV", answer: "SPV is"),
+    FaqEntity(question: "What is this platfomr", answer: "This platform is"),
+    FaqEntity(question: "What is crowndfunding", answer: "Crowdfunding is"),
+    FaqEntity(question: "What is SPV", answer: "SPV is"),
+    FaqEntity(question: "What is this platfomr", answer: "This platform is"),
+    FaqEntity(question: "What is crowndfunding", answer: "Crowdfunding is"),
+    FaqEntity(question: "What is SPV", answer: "SPV is"),
+    FaqEntity(question: "What is this platfomr", answer: "This platform is"),
+    FaqEntity(question: "What is crowndfunding", answer: "Crowdfunding is"),
+    FaqEntity(question: "What is SPV", answer: "SPV is"),
+    FaqEntity(question: "What is this platfomr", answer: "This platform is"),
+    FaqEntity(question: "What is crowndfunding", answer: "Crowdfunding is"),
+    FaqEntity(question: "What is SPV", answer: "SPV is"),
+    FaqEntity(question: "What is this platfomr", answer: "This platform is"),
+    FaqEntity(question: "What is crowndfunding", answer: "Crowdfunding is"),
+    FaqEntity(question: "What is SPV", answer: "SPV is"),
+    FaqEntity(question: "What is this platfomr", answer: "This platform is"),
+    FaqEntity(question: "What is crowndfunding", answer: "Crowdfunding is"),
+    FaqEntity(question: "What is SPV", answer: "SPV is"),
+  ];
+}

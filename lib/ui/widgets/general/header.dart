@@ -4,6 +4,7 @@ import 'dart:html' as html;
 
 import 'package:immocrowd/core/util/design-constants.dart';
 import 'package:immocrowd/core/util/responsive.dart';
+import 'package:immocrowd/ui/screens/faq/faq_screen.dart';
 import 'package:immocrowd/ui/screens/howto/howto_screen.dart';
 import 'package:immocrowd/ui/screens/login/auth_screen.dart';
 import 'package:immocrowd/ui/screens/login/login_screen.dart';
@@ -97,10 +98,16 @@ class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'FAQ',
-                                style: ResponsiveWidget.calculateTextStyle(
-                                    context),
+                              child: InkWell(
+                                onTap: () => {
+                                  Navigator.of(context)
+                                      .pushReplacementNamed(FaqScreen.routeName)
+                                },
+                                child: Text(
+                                  'FAQ',
+                                  style: ResponsiveWidget.calculateTextStyle(
+                                      context),
+                                ),
                               ),
                             ),
                             Padding(

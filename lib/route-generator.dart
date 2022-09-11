@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:immocrowd/ui/screens/faq/faq_screen.dart';
 
 import 'ui/screens/home/home_screen.dart';
 import 'ui/screens/howto/howto_screen.dart';
@@ -16,6 +17,11 @@ import 'ui/widgets/user/profile.dart';
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case FaqScreen.routeName:
+        return MaterialPageRoute(
+          builder: (context) => FaqScreen(),
+          settings: settings,
+        );
       case HowToScreen.routeName:
         return MaterialPageRoute(
           builder: (context) => HowToScreen(),
