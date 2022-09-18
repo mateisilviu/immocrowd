@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:immocrowd/ui/widgets/general/tabs/chart-example.dart';
-import 'package:immocrowd/ui/widgets/general/tabs/investmant-case-table.dart';
+
+import 'investmant-case-table.dart';
 
 class InvestmantCase extends StatelessWidget {
   const InvestmantCase({Key? key}) : super(key: key);

@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:immocrowd/core/util/app-constants.dart';
 import 'package:json_theme/json_theme.dart';
 import 'package:provider/provider.dart';
 
 import 'core/providers/properties-provider.dart';
+import 'core/util/app-constants.dart';
 import 'firebase_options.dart';
 import 'route-generator.dart';
 import 'ui/screens/home/home_screen.dart';

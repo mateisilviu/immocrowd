@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:immocrowd/ui/widgets/general/tabs/investmant-case.dart';
 
 import '../../core/models/property.dart';
+import '../../core/models/property/investmant-case.dart';
 import '../../core/util/responsive.dart';
 import '../widgets/general/tabs/location-tab.dart';
 import '../widgets/general/tabs/photos-tab.dart';
@@ -99,7 +99,7 @@ class _PropertyDetailScreenState extends State<PropertyDetailScreen>
                   Text("Details"),
                   PhotosTab(selectedProperty),
                   LocationTab(selectedProperty),
-                  InvestmantCase(),
+                  // InvestmantCase(),
                   Text("Documents"),
                   Text("Updates"),
                 ],

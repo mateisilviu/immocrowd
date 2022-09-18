@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:immocrowd/ui/screens/faq/faq_screen.dart';
 
+import 'ui/screens/faq/faq_screen.dart';
 import 'ui/screens/home/home_screen.dart';
 import 'ui/screens/howto/howto_screen.dart';
 import 'ui/screens/login/auth_screen.dart';

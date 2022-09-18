@@ -2,14 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:immocrowd/ui/screens/login/signup_screen.dart';
-import 'package:immocrowd/ui/screens/view_properties.dart';
 
 import '../../../core/util/showSnackbar.dart';
 import '../../../main.dart';
 import '../../screens/login/forgot_password_screen.dart';
 import '../../widgets/general/footer/footer.dart';
 import '../../widgets/general/header.dart';
+import '../view_properties.dart';
+import 'signup_screen.dart';
 import 'verify_email_screen.dart';
 
 class LoginScreen extends StatefulWidget {

@@ -3,11 +3,11 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:immocrowd/ui/screens/login/auth_screen.dart';
 
 import '../../../core/util/app-constants.dart';
 import '../../../core/util/responsive.dart';
 import '../../../core/util/showSnackbar.dart';
+import '../../screens/login/auth_screen.dart';
 import '../../screens/login/verify_email_screen.dart';
 import 'app_drawer.dart';
 

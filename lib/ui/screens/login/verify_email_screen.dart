@@ -3,12 +3,11 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:immocrowd/ui/screens/view_properties.dart';
-
 import '../../../core/util/showSnackbar.dart';
 import '../../widgets/general/footer/footer.dart';
 import '../../widgets/general/header.dart';
 import '../home/home_screen.dart';
+import '../view_properties.dart';
 import 'login_screen.dart';
 
 class VerifyEmailScreen extends StatefulWidget {

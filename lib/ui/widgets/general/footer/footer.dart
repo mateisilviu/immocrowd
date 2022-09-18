@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:immocrowd/core/util/design-constants.dart';
-import 'package:immocrowd/core/util/responsive.dart';
-import 'package:immocrowd/ui/screens/faq/faq_screen.dart';
 import 'dart:html' as html;
 
+import '../../../../core/util/design-constants.dart';
+import '../../../../core/util/responsive.dart';
+import '../../../screens/faq/faq_screen.dart';
 import '../../../screens/howto/howto_screen.dart';
 import 'social-links.dart';
 
@@ -63,11 +63,22 @@ class FooterComponent extends StatelessWidget {
   }
 
   Widget buildLogo() {
-    return Container(
-      width: 200,
-      height: 200,
-      decoration: BoxDecoration(color: Colors.amber),
-      child: Center(child: Text("Logo")),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SizedBox(
+        height: 200,
+        child: AspectRatio(
+          aspectRatio: 2.63,
+          child: Container(
+            //width: 618,
+            //height: 235,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/logo.png'))),
+            child: Container(),
+          ),
+        ),
+      ),
     );
   }
 
@@ -149,8 +160,8 @@ class FooterComponent extends StatelessWidget {
       Padding(
         padding: EdgeInsets.all(5),
         child: InkWell(
-            onTap: () =>
-                {html.window.open("https://blog.immoequityfund.com/", "_self")},
+            onTap: () => {},
+            //{html.window.open("https://blog.immoequityfund.com/", "_self")},
             child: Text("Blog")),
       ),
       Padding(
@@ -180,7 +191,9 @@ class FooterComponent extends StatelessWidget {
           thickness: 5,
           color: Color(DesignConstants.GREEN),
         ),
-        SocialLinks()
+        SocialLinks(
+          isMobile: true,
+        )
       ]),
     );
   }

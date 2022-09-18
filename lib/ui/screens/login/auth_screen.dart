@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:immocrowd/ui/screens/login/verify_email_screen.dart';
 
 import '../../widgets/login/login_widget.dart';
 import '../../widgets/login/signup_widget.dart';
+import 'verify_email_screen.dart';
 
 class AuthScreen extends StatefulWidget {
   static const String routeName = '/auth';

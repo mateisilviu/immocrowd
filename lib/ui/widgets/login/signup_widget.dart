@@ -2,10 +2,10 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:immocrowd/ui/screens/login/verify_email_screen.dart';
 
 import '../../../core/util/showSnackbar.dart';
 import '../../../main.dart';
+import '../../screens/login/verify_email_screen.dart';
 
 class SignUpWidget extends StatefulWidget {
   final Function() onClickedSignIn;

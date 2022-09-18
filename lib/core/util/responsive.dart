@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:immocrowd/core/util/design-constants.dart';
+
+import 'design-constants.dart';
 
 class ResponsiveWidget extends StatelessWidget {
   final Widget largeScreen;

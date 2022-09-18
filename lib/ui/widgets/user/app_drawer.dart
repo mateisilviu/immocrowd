@@ -1,12 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:immocrowd/ui/screens/howto/howto_screen.dart';
-import 'package:immocrowd/ui/screens/login/login_screen.dart';
-import 'package:immocrowd/ui/screens/view_properties.dart';
+
 import 'dart:html' as html;
 
 import '../../screens/faq/faq_screen.dart';
+import '../../screens/howto/howto_screen.dart';
+import '../../screens/login/login_screen.dart';
 import '../../screens/login/signup_screen.dart';
+import '../../screens/view_properties.dart';
 
 class AppDrawer extends StatelessWidget {
   @override

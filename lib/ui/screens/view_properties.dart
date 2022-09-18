@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:immocrowd/core/util/app-constants.dart';
-import 'package:immocrowd/ui/widgets/general/header.dart';
 
 import '../../core/util/responsive.dart';
+import '../widgets/general/header.dart';
 import '../widgets/user/app_drawer.dart';
 import '../widgets/user/profile.dart';
 import '../widgets/user/property_grid.dart';

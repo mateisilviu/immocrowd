@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:immocrowd/core/util/responsive.dart';
 
 import '../../../core/models/property.dart';
+import '../../../core/util/responsive.dart';
 import '../../screens/property_detail_screen.dart';
 import '../../screens/property_details_screen.dart';
 

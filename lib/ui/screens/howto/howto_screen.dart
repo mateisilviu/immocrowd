@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:immocrowd/ui/screens/view_properties.dart';
-import 'package:immocrowd/ui/widgets/general/header.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../widgets/general/header.dart';
+import '../view_properties.dart';
 
 class HowToScreen extends StatefulWidget {
   const HowToScreen({Key? key}) : super(key: key);

@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:immocrowd/core/util/app-constants.dart';
 
 import '../../../core/models/property.dart';
 import '../../../core/services/properties-db-service.dart';
+import '../../../core/util/app-constants.dart';
 import '../../../core/util/responsive.dart';
 import 'property_item.dart';
 

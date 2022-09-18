@@ -2,13 +2,13 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:immocrowd/ui/screens/login/login_screen.dart';
-import 'package:immocrowd/ui/screens/login/verify_email_screen.dart';
 
 import '../../../core/util/showSnackbar.dart';
 import '../../../main.dart';
 import '../../widgets/general/footer/footer.dart';
 import '../../widgets/general/header.dart';
+import 'login_screen.dart';
+import 'verify_email_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   static const String routeName = '/register';

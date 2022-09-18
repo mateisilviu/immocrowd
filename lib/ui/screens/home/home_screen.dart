@@ -2,7 +2,6 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:immocrowd/ui/screens/howto/howto_screen.dart';
 
 import '../../../core/util/app-constants.dart';
 import '../../../core/util/responsive.dart';
@@ -10,6 +9,7 @@ import '../../widgets/general/appbar/login-buttons.dart';
 import '../../widgets/general/footer/footer.dart';
 import '../../widgets/general/header.dart';
 import '../../widgets/user/app_drawer.dart';
+import '../howto/howto_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);

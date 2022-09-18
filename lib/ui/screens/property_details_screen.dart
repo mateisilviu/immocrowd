@@ -3,13 +3,13 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/rendering/sliver_persistent_header.dart';
-import 'package:immocrowd/ui/widgets/general/tabs/location-tab.dart';
 import 'package:scrollable_list_tabview/scrollable_list_tabview.dart';
 
 import '../../core/models/property.dart';
 import '../../core/util/design-constants.dart';
 import '../widgets/general/photo-details-fullscreen.dart';
 import '../widgets/general/tabs/investmant-case.dart';
+import '../widgets/general/tabs/location-tab.dart';
 import '../widgets/general/tabs/photos-tab.dart';
 
 class PropertyDetailsScreen extends StatelessWidget {
