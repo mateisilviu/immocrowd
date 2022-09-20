@@ -45,7 +45,7 @@ class AppDrawer extends StatelessWidget {
             'Blog',
             'assets/images/drawer/blog_100.gif',
             () => {
-                  html.window.open("https://blog.immoequityfund.com/", "_self")
+                  // html.window.open("https://blog.immoequityfund.com/", "_self")
                 }),
         _buildCustomListTile(
             'How it works',

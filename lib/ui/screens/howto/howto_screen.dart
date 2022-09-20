@@ -20,10 +20,16 @@ class _HowToScreenState extends State<HowToScreen> {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
+    var paddingMultiplier = 0.15;
+    if (screenWidth < 800) {
+      paddingMultiplier = 0.01;
+    }
+
     return Scaffold(
       appBar: HeaderWidget(title: HowToScreen.title),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.15),
+        padding:
+            EdgeInsets.symmetric(horizontal: screenWidth * paddingMultiplier),
         child: Container(
           padding: const EdgeInsets.only(bottom: 80),
           child: PageView(
@@ -34,24 +40,21 @@ class _HowToScreenState extends State<HowToScreen> {
             children: [
               buildPage(
                 color: Colors.green.shade100,
-                urlImage:
-                    'https://firebasestorage.googleapis.com/v0/b/immocrowd-49e21.appspot.com/o/howto%2Fdecide.png?alt=media&token=75fae5e2-2238-4e28-a5ae-2bc2d1ad3848',
+                urlImage: 'assets/images/howto/decide.png',
                 title: 'DECIDE',
                 subtitle:
                     'Choose from available properties the one that you want to invest into. Choose the amount you want to invest. Sign the promise investmant agreemant.',
               ),
               buildPage(
                 color: Colors.blue.shade100,
-                urlImage:
-                    'https://firebasestorage.googleapis.com/v0/b/immocrowd-49e21.appspot.com/o/howto%2Fsign_documents.png?alt=media&token=93f370a9-f4c2-44f1-bc50-5385b74cd9f7',
+                urlImage: 'assets/images/howto/sign_documents.png',
                 title: 'SIGN',
                 subtitle:
                     'Once the property reaches 100% invested, we will create a special company called \'SPV\' (Special Purpose Vehicul) where everybody has shares proportional with the invested amount. Documents needs to be signed at this step and the amount invested will be transfered.',
               ),
               buildPage(
                 color: Colors.orange.shade100,
-                urlImage:
-                    'https://firebasestorage.googleapis.com/v0/b/immocrowd-49e21.appspot.com/o/howto%2Fcelebrate.png?alt=media&token=5e8f736f-e85b-4fdb-aaad-fbf24c1e7b4b',
+                urlImage: 'assets/images/howto/celebrate.png',
                 title: 'CELEBRATE',
                 subtitle:
                     'The new formed company - SPV - will buy the property. We will take care of all documents. Once the property is bought, we list it for rent using our partners. You will receive dividents from the rent proportional with the invested amount.',
@@ -61,7 +64,8 @@ class _HowToScreenState extends State<HowToScreen> {
         ),
       ),
       bottomSheet: Padding(
-        padding: EdgeInsets.symmetric(horizontal: screenWidth * .15),
+        padding:
+            EdgeInsets.symmetric(horizontal: screenWidth * paddingMultiplier),
         child: isLastPage
             ? ElevatedButton(
                 style: TextButton.styleFrom(
@@ -73,7 +77,8 @@ class _HowToScreenState extends State<HowToScreen> {
                   minimumSize: const Size.fromHeight(80),
                 ),
                 child: const Text(
-                  'Be part of this story too!',
+                  'Be part of co-owner generation too!',
+                  textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 24),
                 ),
                 onPressed: () async {
@@ -142,11 +147,10 @@ class _HowToScreenState extends State<HowToScreen> {
             Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.1),
-              child: Image.network(
-                urlImage,
-                fit: BoxFit.scaleDown,
-                width: double.infinity,
-              ),
+              child: Image(
+                  fit: BoxFit.scaleDown,
+                  width: double.infinity,
+                  image: AssetImage(urlImage)),
             ),
             const SizedBox(height: 20),
             Text(

@@ -56,7 +56,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(height: 60),
-                        FlutterLogo(size: 120),
+                        Image(
+                            height: 120,
+                            width: 120,
+                            image: AssetImage(
+                                'assets/images/drawer/signup_100.gif')),
                         SizedBox(height: 20),
                         Text(
                           'Hey There ${firstNameController.text} ${lastNameController.text},\n Happy to have you on this platform',

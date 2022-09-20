@@ -19,12 +19,16 @@ class HomeScreen extends StatelessWidget {
   final CarouselController _controller = CarouselController();
 
   var homePageImages = [
-    Image.network(
-        'https://firebasestorage.googleapis.com/v0/b/immocrowd-49e21.appspot.com/o/homepage%2Fapartmanet_600.jpg?alt=media&token=aa408dcf-0982-410c-b9b4-b9b98a3dea8e'),
-    Image.network(
-        'https://firebasestorage.googleapis.com/v0/b/immocrowd-49e21.appspot.com/o/homepage%2Fmage_600.jpg?alt=media&token=f349a593-7bf9-4ae3-89fa-eb17d3da5968'),
-    Image.network(
-        'https://firebasestorage.googleapis.com/v0/b/immocrowd-49e21.appspot.com/o/homepage%2Fparking_600.jpg?alt=media&token=a8cc0847-15f3-4765-8267-53f40e26bf84'),
+    Image(image: AssetImage('assets/images/homepage/apartment_600.jpg')),
+    Image(image: AssetImage('assets/images/homepage/commercial_600.jpg')),
+    Image(image: AssetImage('assets/images/homepage/parking_600.jpg')),
+  ];
+
+  var generationImages = [
+    Image(image: AssetImage('assets/images/homepage/gen_1.jpg')),
+    Image(image: AssetImage('assets/images/homepage/gen_2.jpg')),
+    Image(image: AssetImage('assets/images/homepage/gen_3.jpg')),
+    Image(image: AssetImage('assets/images/homepage/gen_4.jpg')),
   ];
 
   @override
@@ -41,6 +45,15 @@ class HomeScreen extends StatelessWidget {
             SizedBox(
               height: 50,
             ),
+            ResponsiveWidget.isSmallScreen(context)
+                ? buildGenerationImageMobile(context)
+                : Container(
+                    height: 578,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                                'assets/images/generation_1920.jpg'))),
+                    child: null),
             ResponsiveWidget.isSmallScreen(context)
                 ? buildFrontDescriptionMobile(context, padding)
                 : buildFrontDescriptionDesktop(context, padding),
@@ -61,6 +74,24 @@ class HomeScreen extends StatelessWidget {
                 image: DecorationImage(
           image: AssetImage(assetImg),
         ))));
+  }
+
+  Widget buildGenerationImageMobile(BuildContext context) {
+    return Container(
+      height: 578,
+      child: CarouselSlider(
+        //carouselController: _controller,
+        options: CarouselOptions(
+            pauseAutoPlayOnManualNavigate: false,
+            pauseAutoPlayOnTouch: false,
+            viewportFraction: 1.0,
+            autoPlay: true,
+            autoPlayInterval: Duration(seconds: 2),
+            autoPlayAnimationDuration: Duration(milliseconds: 800),
+            aspectRatio: 1),
+        items: generationImages,
+      ),
+    );
   }
 
   Widget buildFrontDescriptionMobile(BuildContext context, double padding) {
@@ -105,28 +136,28 @@ class HomeScreen extends StatelessWidget {
       children: [
         Container(
           // decoration: BoxDecoration(color: Colors.amber),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AutoSizeText(
-                "Build your real estate portofolio with a rented ",
-                style: TextStyle(fontSize: 16),
-                maxLines: 1,
+                "Build your real estate portofolio with a ",
+                style: TextStyle(fontSize: 20),
+                maxLines: 3,
                 minFontSize: 12,
               ),
               AnimatedTextKit(
                   onNext: (next, variable) => {_controller.animateToPage(next)},
                   repeatForever: true,
                   animatedTexts: [
-                    ScaleAnimatedText('parking space',
-                        textStyle: TextStyle(fontSize: 16),
+                    ScaleAnimatedText('rented parking space',
+                        textStyle: TextStyle(fontSize: 24),
                         duration: Duration(seconds: 3)),
-                    ScaleAnimatedText('apartment',
+                    ScaleAnimatedText('rented apartment',
                         duration: Duration(seconds: 3),
-                        textStyle: TextStyle(fontSize: 16)),
-                    ScaleAnimatedText('comercial place',
+                        textStyle: TextStyle(fontSize: 24)),
+                    ScaleAnimatedText('rented comercial place',
                         duration: Duration(seconds: 3),
-                        textStyle: TextStyle(fontSize: 16)),
+                        textStyle: TextStyle(fontSize: 24)),
                   ])
             ],
           ),
@@ -161,7 +192,7 @@ class HomeScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         AutoSizeText(
-          'Invest in real estate with a single click and small amount of money.',
+          'Simple smart investments',
           style: TextStyle(fontSize: 30),
           maxLines: 3,
           minFontSize: 18,
@@ -172,11 +203,11 @@ class HomeScreen extends StatelessWidget {
         SizedBox(
           width: 900,
           child: AutoSizeText(
-            'coowner.estate is a platform where you can build a real estate portofolio.You invest small amounts of money along side other investors.You will receive dividents from rented properties.',
+            'Co-Owner Generation is a platform where you can build a real estate portofolio.You invest small amounts of money along side other investors. You will receive dividents from rented properties.',
             softWrap: true,
             style: TextStyle(fontSize: 24),
-            maxLines: 3,
-            minFontSize: 14,
+            maxLines: 7,
+            minFontSize: 12,
           ),
         ),
         const SizedBox(

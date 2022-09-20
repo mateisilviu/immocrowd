@@ -40,7 +40,10 @@ class _LoginWidgetState extends State<LoginWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(height: 60),
-                FlutterLogo(size: 120),
+                Image(
+                    height: 120,
+                    width: 120,
+                    image: AssetImage('assets/images/drawer/login_100.gif')),
                 SizedBox(height: 20),
                 Text(
                   'Hey There,\n Welcome Back',

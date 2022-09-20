@@ -67,9 +67,9 @@ class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: InkWell(
                                 onTap: () => {
-                                  html.window.open(
+                                  /* html.window.open(
                                       "https://blog.immoequityfund.com/",
-                                      "_self")
+                                      "_self")*/
                                 },
                                 child: Text(
                                   'Blog',

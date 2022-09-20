@@ -89,6 +89,7 @@ flutter:
     - assets/images/homepage/
     - assets/images/profile/
     - assets/images/social/
+    - assets/images/howto/
     - assets/themes/appainter_theme_0xff97f9e3.json
   #   - images/a_dot_burr.jpeg
 

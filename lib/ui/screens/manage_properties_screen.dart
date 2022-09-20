@@ -62,7 +62,8 @@ class _ManagePropertiesScreenState extends State<ManagePropertiesScreen> {
       photo: List.empty(),
       shortDescription: '',
       createdAt: Timestamp.now(),
-      modifiedAt: Timestamp.now());
+      modifiedAt: Timestamp.now(),
+      price: "0");
 
   Future<void> _saveForm() async {
     final isValid = _form.currentState?.validate();
@@ -113,7 +114,8 @@ class _ManagePropertiesScreenState extends State<ManagePropertiesScreen> {
                       photo: List.empty(),
                       shortDescription: '',
                       createdAt: Timestamp.now(),
-                      modifiedAt: Timestamp.now());
+                      modifiedAt: Timestamp.now(),
+                      price: "0");
                   _imageFileList?.clear();
                 });
                 Navigator.of(ctx).pop();
@@ -141,7 +143,8 @@ class _ManagePropertiesScreenState extends State<ManagePropertiesScreen> {
                       photo: List.empty(),
                       shortDescription: '',
                       createdAt: Timestamp.now(),
-                      modifiedAt: Timestamp.now());
+                      modifiedAt: Timestamp.now(),
+                      price: "0");
                   _imageFileList?.clear();
                 });
                 Navigator.of(ctx).pop();

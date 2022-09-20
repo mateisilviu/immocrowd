@@ -5,20 +5,23 @@ import 'package:flutter/material.dart';
 class Property {
   static String COLLECTION_NAME = 'properties';
 
-  Property(
-      {required this.id,
-      required this.name,
-      required this.shortDescription,
-      required this.address,
-      required this.photo,
-      required this.createdAt,
-      required this.modifiedAt});
+  Property({
+    required this.id,
+    required this.name,
+    required this.shortDescription,
+    required this.address,
+    required this.photo,
+    required this.createdAt,
+    required this.modifiedAt,
+    required this.price,
+  });
 
   final String id;
   final String name;
   final String shortDescription;
   final String address;
   final List<String> photo;
+  final String price;
 
   Timestamp createdAt = Timestamp.now();
   Timestamp modifiedAt = Timestamp.now();
@@ -34,7 +37,8 @@ class Property {
             address: other.address,
             photo: List<String>.from(other.photo),
             createdAt: other.createdAt,
-            modifiedAt: Timestamp.now());
+            modifiedAt: Timestamp.now(),
+            price: other.price);
 
   Property.updateName(String name, Property other)
       : this(
@@ -44,7 +48,8 @@ class Property {
             address: other.address,
             photo: List<String>.from(other.photo),
             createdAt: other.createdAt,
-            modifiedAt: Timestamp.now());
+            modifiedAt: Timestamp.now(),
+            price: other.price);
   Property.updateShortDescription(String shortDescription, Property other)
       : this(
             id: other.id,
@@ -53,7 +58,8 @@ class Property {
             address: other.address,
             photo: List<String>.from(other.photo),
             createdAt: other.createdAt,
-            modifiedAt: Timestamp.now());
+            modifiedAt: Timestamp.now(),
+            price: other.price);
   Property.updateAddress(String address, Property other)
       : this(
             id: other.id,
@@ -62,7 +68,8 @@ class Property {
             address: address,
             photo: List<String>.from(other.photo),
             createdAt: other.createdAt,
-            modifiedAt: Timestamp.now());
+            modifiedAt: Timestamp.now(),
+            price: other.price);
   Property.updatePhoto(List<String> photo, Property other)
       : this(
             id: other.id,
@@ -71,7 +78,8 @@ class Property {
             address: other.address,
             photo: List<String>.from(photo),
             createdAt: other.createdAt,
-            modifiedAt: Timestamp.now());
+            modifiedAt: Timestamp.now(),
+            price: other.price);
 
   Property.fromJson(Map<String, Object?> json)
       : this(
@@ -81,7 +89,8 @@ class Property {
             address: json['address']! as String,
             photo: (json['photo']! as List).cast<String>(),
             createdAt: json['createdAt'] as Timestamp,
-            modifiedAt: json['modifiedAt'] as Timestamp);
+            modifiedAt: json['modifiedAt'] as Timestamp,
+            price: json['price'] as String);
 
   Map<String, Object?> toJson() {
     return {
@@ -91,7 +100,8 @@ class Property {
       'address': address,
       'photo': photo,
       'createdAt': createdAt,
-      'modifiedAt': modifiedAt
+      'modifiedAt': modifiedAt,
+      'price': price,
     };
   }
 }
