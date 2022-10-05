@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import 'property/documents.dart';
+
 @immutable
 class Property {
   static String COLLECTION_NAME = 'properties';
@@ -22,6 +24,7 @@ class Property {
   final String address;
   final List<String> photo;
   final String price;
+  List<Documents> documents = Documents.mocked;
 
   Timestamp createdAt = Timestamp.now();
   Timestamp modifiedAt = Timestamp.now();

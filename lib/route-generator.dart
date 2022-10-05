@@ -1,3 +1,4 @@
+import 'package:coownergeneration/ui/screens/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'ui/screens/faq/faq_screen.dart';
@@ -17,6 +18,15 @@ import 'ui/widgets/user/profile.dart';
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case DashboardScreen.routeName:
+        {
+          final openSettings = settings.arguments == null ? false : true;
+          return MaterialPageRoute(
+            builder: (context) => DashboardScreen(openSettings: openSettings),
+            settings: settings,
+          );
+        }
+
       case FaqScreen.routeName:
         return MaterialPageRoute(
           builder: (context) => FaqScreen(),
