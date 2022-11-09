@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../../../core/util/app-constants.dart';
 import '../../../core/util/responsive.dart';
 import '../../widgets/general/appbar/login-buttons.dart';
+import '../../widgets/general/calculator/calculator.dart';
 import '../../widgets/general/footer/footer.dart';
 import '../../widgets/general/header.dart';
 import '../../widgets/user/app_drawer.dart';
@@ -57,6 +58,10 @@ class HomeScreen extends StatelessWidget {
             ResponsiveWidget.isSmallScreen(context)
                 ? buildFrontDescriptionMobile(context, padding)
                 : buildFrontDescriptionDesktop(context, padding),
+            SizedBox(
+              height: 50,
+            ),
+            CalculatorWidget(),
             FooterComponent()
           ],
         ),

@@ -61,6 +61,9 @@ dependencies:
   auto_size_text: ^3.0.0
   easy_sidemenu: ^0.4.0
   path_provider: ^2.0.11
+  syncfusion_flutter_sliders: ^20.3.52
+  syncfusion_flutter_core: ^20.3.52
+  syncfusion_flutter_gauges: ^20.3.52
 
 dev_dependencies:
   flutter_test:
