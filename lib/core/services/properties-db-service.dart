@@ -4,7 +4,7 @@ import '../interfaces/property-service-interface.dart';
 import '../models/property.dart';
 
 class PropertiesService implements PropertyDao {
-  final FirebaseFirestore dbInstance = FirebaseFirestore.instance;
+  static final FirebaseFirestore dbInstance = FirebaseFirestore.instance;
 
   static final propertyRef = FirebaseFirestore.instance
       .collection(Property.COLLECTION_NAME)
@@ -66,6 +66,24 @@ class PropertiesService implements PropertyDao {
           .collection(Property.COLLECTION_NAME)
           .doc(property.id)
           .set(property.toJson());
+    } catch (error) {
+      print(error);
+      throw error;
+    }
+  }
+
+  static Future<Property> getPropertyById(String id) async {
+    try {
+      final ref = dbInstance
+          .collection(Property.COLLECTION_NAME)
+          .doc(id)
+          .withConverter<Property>(
+              fromFirestore: (snapshots, _) =>
+                  Property.fromJson(snapshots.data()!),
+              toFirestore: (toFirestore, _) => toFirestore.toJson());
+
+      final docSnap = await ref.get();
+      return Future.value(docSnap.data());
     } catch (error) {
       print(error);
       throw error;

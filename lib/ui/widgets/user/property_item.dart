@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/models/property.dart';
 import '../../../core/util/responsive.dart';
@@ -162,9 +163,10 @@ class PropertyItem extends StatelessWidget {
                           // Navigator.of(context).pushNamed(
                           //     PropertyDetailScreen.routeName,
                           //     arguments: item)
-                          Navigator.pushNamed(
-                              context, PropertyDetailsScreen.routeName,
-                              arguments: item)
+                          // Navigator.pushNamed(
+                          //     context, PropertyDetailsScreen.routeName,
+                          //     arguments: item)
+                          context.go(PropertyDetailsScreen.fullPath + item.id)
                         },
                     child: const Text('Details'))),
 

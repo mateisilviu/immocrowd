@@ -1,10 +1,12 @@
 import 'dart:convert';
 
+import 'package:coownergeneration/go-route-generator.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:json_theme/json_theme.dart';
 import 'package:provider/provider.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 import 'core/providers/properties-provider.dart';
 import 'core/util/app-constants.dart';
@@ -26,6 +28,8 @@ void main() async {
   //   );
   // }
   var selectedTheme = await _onThemeSelected("appainter_theme_0xff97f9e3");
+
+  setPathUrlStrategy();
 
   runApp(MyApp(
     theme: selectedTheme,
@@ -68,14 +72,18 @@ class MyApp extends StatelessWidget {
             create: (_) => PropertiesProvider(),
           )
         ],
-        child: MaterialApp(
-          title: AppConstants.TITLE,
-          theme: theme,
-          navigatorKey: navigatorKey,
-          home: HomeScreen(),
-          onGenerateRoute: RouteGenerator.generateRoute,
-          initialRoute: '/',
-        ));
+        // child: MaterialApp(
+        //   title: AppConstants.TITLE,
+        //   theme: theme,
+        //   navigatorKey: navigatorKey,
+        //   home: HomeScreen(),
+        //   onGenerateRoute: RouteGenerator.generateRoute,
+        //   initialRoute: '/',
+        // ));
+        child: MaterialApp.router(
+            title: AppConstants.TITLE,
+            theme: theme,
+            routerConfig: GoRouteGenerator().router));
   }
 }
 

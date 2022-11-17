@@ -37,11 +37,11 @@ class RouteGenerator {
           builder: (context) => HowToScreen(),
           settings: settings,
         );
-      case PropertyDetailsScreen.routeName:
-        return MaterialPageRoute(
-          builder: (context) => PropertyDetailsScreen(),
-          settings: settings,
-        );
+      // case PropertyDetailsScreen.routeName:
+      //   return MaterialPageRoute(
+      //     builder: (context) => PropertyDetailsScreen(),
+      //     settings: settings,
+      //   );
       case PropertyDetailScreen.routeName:
         return MaterialPageRoute(
           builder: (context) => PropertyDetailScreen(),

@@ -1,6 +1,7 @@
 import 'package:coownergeneration/ui/screens/dashboard/dashboard_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'dart:html' as html;
 
 import '../../../core/util/app-constants.dart';
@@ -66,8 +67,9 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                               padding: const EdgeInsets.all(8.0),
                               child: InkWell(
                                 onTap: () => {
-                                  Navigator.of(context).pushReplacementNamed(
-                                      ViewPropertiesScreen.routeName)
+                                  // Navigator.of(context).pushReplacementNamed(
+                                  //     ViewPropertiesScreen.routeName)
+                                  context.go(ViewPropertiesScreen.routeName)
                                 },
                                 child: Text(
                                   'Properties',

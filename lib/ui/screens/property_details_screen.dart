@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:coownergeneration/core/services/properties-db-service.dart';
+import 'package:coownergeneration/ui/screens/view_properties.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/rendering/sliver_persistent_header.dart';
 import 'package:scrollable_list_tabview/scrollable_list_tabview.dart';
 
 import '../../core/models/property.dart';
@@ -10,10 +10,22 @@ import '../../core/util/design-constants.dart';
 import '../widgets/general/photo-details-fullscreen.dart';
 import '../widgets/general/tabs/investmant-case.dart';
 import '../widgets/general/tabs/location-tab.dart';
-import '../widgets/general/tabs/photos-tab.dart';
 
-class PropertyDetailsScreen extends StatelessWidget {
-  static const String routeName = "/details";
+class PropertyDetailsScreen extends StatefulWidget {
+  static const String routeName = "details";
+  static const String fullPath =
+      ViewPropertiesScreen.routeName + '/' + routeName + '/';
+
+  final String propertyId;
+
+  PropertyDetailsScreen({required this.propertyId, Key? key}) : super(key: key);
+
+  @override
+  State<PropertyDetailsScreen> createState() => _PropertyDetailsScreenState();
+}
+
+class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
+  late Future<Property> selectedPropertyFuture;
 
   /*Property selectedProperty = Property(
       id: "id",
@@ -42,9 +54,16 @@ class PropertyDetailsScreen extends StatelessWidget {
   }
 
   @override
+  void initState() {
+    super.initState();
+    // this should not be done in build method.
+    selectedPropertyFuture =
+        PropertiesService.getPropertyById(widget.propertyId);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final selectedProperty =
-        ModalRoute.of(context)!.settings.arguments as Property;
+    // ModalRoute.of(context)!.hsettings.arguments as Property;
     /*
     return Scaffold(
         body: DefaultTabController(
@@ -117,6 +136,31 @@ class PropertyDetailsScreen extends StatelessWidget {
 
     //   final selectedProperty =
     //     ModalRoute.of(context)!.settings.arguments as Property;
+    return FutureBuilder<Property>(
+      future: selectedPropertyFuture,
+      builder: (
+        BuildContext context,
+        AsyncSnapshot<Property> snapshot,
+      ) {
+        print(snapshot.connectionState);
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return CircularProgressIndicator();
+        } else if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.hasError) {
+            return const Text('Error');
+          } else if (snapshot.hasData) {
+            return _build(snapshot.data!);
+          } else {
+            return const Text('Empty data');
+          }
+        } else {
+          return Text('State: ${snapshot.connectionState}');
+        }
+      },
+    );
+  }
+
+  Widget _build(Property selectedProperty) {
     return Scaffold(
       appBar: AppBar(
         title: Text(selectedProperty.name),
