@@ -29,7 +29,7 @@ void main() async {
   // }
   var selectedTheme = await _onThemeSelected("appainter_theme_0xff97f9e3");
 
-  setPathUrlStrategy();
+  // setPathUrlStrategy();
 
   runApp(MyApp(
     theme: selectedTheme,

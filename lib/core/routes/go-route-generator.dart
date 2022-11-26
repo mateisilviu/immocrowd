@@ -1,3 +1,4 @@
+import 'package:coownergeneration/ui/screens/auth/login_screen.dart';
 import 'package:coownergeneration/ui/screens/faq/faq_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -62,6 +63,10 @@ class GoRouteGenerator {
       GoRoute(
         path: SignUpScreen.routeName,
         builder: (context, state) => const SignUpScreen(),
+      ),
+      GoRoute(
+        path: LoginScreen.routeName,
+        builder: (context, state) => const LoginScreen(),
       ),
       GoRoute(
         path: VerifyEmailScreen.routeName,
