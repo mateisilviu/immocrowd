@@ -37,33 +37,33 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCIod1vcilEH7vz86sT5AlXsnduuOrAv98',
-    appId: '1:668255069444:web:f684a9d834990e0a15dc51',
-    messagingSenderId: '668255069444',
-    projectId: 'immocrowd-49e21',
-    authDomain: 'immocrowd-49e21.firebaseapp.com',
-    databaseURL: 'https://immocrowd-49e21-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'immocrowd-49e21.appspot.com',
-    measurementId: 'G-T9K9Y1ZGF1',
+    apiKey: 'AIzaSyCWlJBwd_ldJOPxHh6QOc6oVxjcaQJeRv8',
+    appId: '1:977443506924:web:009766f6a0f6bf6aff33c9',
+    messagingSenderId: '977443506924',
+    projectId: 'coogen-9b081',
+    authDomain: 'coogen-9b081.firebaseapp.com',
+    databaseURL: 'https://coogen-9b081-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'coogen-9b081.appspot.com',
+    measurementId: 'G-7E6KHC444V',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDIMeYtJAAaWK9zREKDrP91Itawwp2T8NI',
-    appId: '1:668255069444:android:ec2b2bee454e3d2f15dc51',
-    messagingSenderId: '668255069444',
-    projectId: 'immocrowd-49e21',
-    databaseURL: 'https://immocrowd-49e21-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'immocrowd-49e21.appspot.com',
+    apiKey: 'AIzaSyA2Xff_mKprYFECFLfnbRT6eyxT6TgRinQ',
+    appId: '1:977443506924:android:b0987766763547faff33c9',
+    messagingSenderId: '977443506924',
+    projectId: 'coogen-9b081',
+    databaseURL: 'https://coogen-9b081-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'coogen-9b081.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBbYoSiqUYVvpQcuDWgDYwLSpvjsBrWE7k',
-    appId: '1:668255069444:ios:cab0097f9f78017315dc51',
-    messagingSenderId: '668255069444',
-    projectId: 'immocrowd-49e21',
-    databaseURL: 'https://immocrowd-49e21-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'immocrowd-49e21.appspot.com',
-    iosClientId: '668255069444-buvi3bvjj3pmuf3nulss3i128qe269kq.apps.googleusercontent.com',
+    apiKey: 'AIzaSyAbOqeV1o8fMLHJlavi2R1XeVsykEQNYWs',
+    appId: '1:977443506924:ios:21854f08d4bd3d0eff33c9',
+    messagingSenderId: '977443506924',
+    projectId: 'coogen-9b081',
+    databaseURL: 'https://coogen-9b081-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'coogen-9b081.appspot.com',
+    iosClientId: '977443506924-rdbsi9s3ac9asptdcjb19jucb923j342.apps.googleusercontent.com',
     iosBundleId: 'com.example.immocrowd',
   );
 }

@@ -1,42 +1,35 @@
 {
   "project_info": {
-    "project_number": "668255069444",
-    "firebase_url": "https://immocrowd-49e21-default-rtdb.europe-west1.firebasedatabase.app",
-    "project_id": "immocrowd-49e21",
-    "storage_bucket": "immocrowd-49e21.appspot.com"
+    "project_number": "977443506924",
+    "firebase_url": "https://coogen-9b081-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "coogen-9b081",
+    "storage_bucket": "coogen-9b081.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:668255069444:android:ec2b2bee454e3d2f15dc51",
+        "mobilesdk_app_id": "1:977443506924:android:b0987766763547faff33c9",
         "android_client_info": {
           "package_name": "com.example.immocrowd"
         }
       },
       "oauth_client": [
         {
-          "client_id": "668255069444-c7oolgpi3uad8jh5adtul45e8bp14tfl.apps.googleusercontent.com",
+          "client_id": "977443506924-8j4h8avt0rf6j7mffsbsutccnfs5maao.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDIMeYtJAAaWK9zREKDrP91Itawwp2T8NI"
+          "current_key": "AIzaSyA2Xff_mKprYFECFLfnbRT6eyxT6TgRinQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "668255069444-c7oolgpi3uad8jh5adtul45e8bp14tfl.apps.googleusercontent.com",
+              "client_id": "977443506924-8j4h8avt0rf6j7mffsbsutccnfs5maao.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "668255069444-buvi3bvjj3pmuf3nulss3i128qe269kq.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.immocrowd"
-              }
             }
           ]
         }
