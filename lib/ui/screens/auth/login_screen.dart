@@ -28,6 +28,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -90,17 +91,22 @@ class _LoginScreenState extends State<LoginScreen> {
                       obscureText: true,
                     ),
                     SizedBox(height: 20),
-                    ElevatedButton.icon(
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: Size.fromHeight(50),
-                      ),
-                      icon: Icon(Icons.lock_open, size: 32),
-                      label: Text(
-                        'Sign In',
-                        style: TextStyle(fontSize: 24),
-                      ),
-                      onPressed: signIn,
-                    ),
+                    isLoading
+                        ? ElevatedButton(
+                            onPressed: null,
+                            child: CircularProgressIndicator(),
+                          )
+                        : ElevatedButton.icon(
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: Size.fromHeight(50),
+                            ),
+                            icon: Icon(Icons.lock_rounded, size: 32),
+                            label: Text(
+                              'Sign In',
+                              style: TextStyle(fontSize: 24),
+                            ),
+                            onPressed: signIn,
+                          ),
                     SizedBox(height: 24),
                     GestureDetector(
                       child: Text(
@@ -151,24 +157,32 @@ class _LoginScreenState extends State<LoginScreen> {
       ));
 
   Future signIn() async {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => Center(child: CircularProgressIndicator()),
-    );
+    // showDialog(
+    //   context: context,
+    //   barrierDismissible: false,
+    //   builder: (context) => Center(child: CircularProgressIndicator()),
+    // );
+    setState(() {
+      isLoading = true;
+    });
 
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim(),
+          )
+          .then((value) => NavigatorService(context).pushNamed('/'));
     } on FirebaseAuthException catch (e) {
       print(e);
 
       showSnackBar(context, e.message);
     }
+    setState(() {
+      isLoading = false;
+    });
 
     // Navigator.of(context) not working!
-    navigatorKey.currentState!.popUntil((route) => route.isFirst);
+    //navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 }
