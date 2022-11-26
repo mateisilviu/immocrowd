@@ -3,9 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/routes/navigator.dart';
 import '../../../core/util/showSnackbar.dart';
 import '../../../main.dart';
-import '../../screens/login/verify_email_screen.dart';
+import '../../screens/auth/verify_email_screen.dart';
 
 class SignUpWidget extends StatefulWidget {
   final Function() onClickedSignIn;
@@ -146,7 +147,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
 
       showSnackBar(context, e.message);
     }
-    Navigator.of(context).pushNamed(VerifyEmailScreen.routeName);
+    NavigatorService(context).pushNamed(VerifyEmailScreen.routeName);
     // Navigator.of(context) not working!
     //navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }

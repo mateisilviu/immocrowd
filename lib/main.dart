@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:coownergeneration/go-route-generator.dart';
+import 'package:coownergeneration/core/routes/go-route-generator.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,7 +11,7 @@ import 'package:url_strategy/url_strategy.dart';
 import 'core/providers/properties-provider.dart';
 import 'core/util/app-constants.dart';
 import 'firebase_options.dart';
-import 'route-generator.dart';
+import 'core/routes/route-generator.dart';
 import 'ui/screens/home/home_screen.dart';
 
 void main() async {

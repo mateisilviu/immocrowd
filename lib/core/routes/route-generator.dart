@@ -1,19 +1,19 @@
 import 'package:coownergeneration/ui/screens/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'ui/screens/faq/faq_screen.dart';
-import 'ui/screens/home/home_screen.dart';
-import 'ui/screens/howto/howto_screen.dart';
-import 'ui/screens/login/auth_screen.dart';
-import 'ui/screens/login/forgot_password_screen.dart';
-import 'ui/screens/login/login_screen.dart';
-import 'ui/screens/login/signup_screen.dart';
-import 'ui/screens/login/verify_email_screen.dart';
-import 'ui/screens/manage_properties_screen.dart';
-import 'ui/screens/property_detail_screen.dart';
-import 'ui/screens/property_details_screen.dart';
-import 'ui/screens/view_properties.dart';
-import 'ui/widgets/user/profile.dart';
+import '../../ui/screens/faq/faq_screen.dart';
+import '../../ui/screens/home/home_screen.dart';
+import '../../ui/screens/howto/howto_screen.dart';
+import '../../ui/screens/auth/auth_screen.dart';
+import '../../ui/screens/auth/forgot_password_screen.dart';
+import '../../ui/screens/auth/login_screen.dart';
+import '../../ui/screens/auth/signup_screen.dart';
+import '../../ui/screens/auth/verify_email_screen.dart';
+import '../../ui/screens/manage_properties_screen.dart';
+import '../../ui/screens/property_detail_screen.dart';
+import '../../ui/screens/property_details_screen.dart';
+import '../../ui/screens/view_properties.dart';
+import '../../ui/widgets/user/profile.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {

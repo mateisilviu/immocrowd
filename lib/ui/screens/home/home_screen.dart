@@ -3,6 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/routes/navigator.dart';
 import '../../../core/util/app-constants.dart';
 import '../../../core/util/responsive.dart';
 import '../../widgets/general/appbar/login-buttons.dart';
@@ -223,7 +224,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () =>
-                  Navigator.of(context).pushNamed(HowToScreen.routeName),
+                  NavigatorService(context).pushNamed(HowToScreen.routeName),
               child: AutoSizeText(
                 'Learn more',
                 minFontSize: 12,

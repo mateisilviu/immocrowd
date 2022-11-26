@@ -2,7 +2,9 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../core/routes/navigator.dart';
 import '../../../core/util/showSnackbar.dart';
 import '../../../main.dart';
 import '../../widgets/general/footer/footer.dart';
@@ -146,7 +148,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               TextSpan(
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () => {
-                                        Navigator.of(context)
+                                        NavigatorService(context)
                                             .pushReplacementNamed(
                                                 LoginScreen.routeName)
                                       },
@@ -197,7 +199,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
       showSnackBar(context, e.message);
     }
-    Navigator.of(context).pushNamed(VerifyEmailScreen.routeName);
+    NavigatorService(context).pushReplacementNamed(VerifyEmailScreen.routeName);
+    //Navigator.of(context).pushNamed(VerifyEmailScreen.routeName);
     // Navigator.of(context) not working!
     //navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/util/showSnackbar.dart';
 import '../../../main.dart';
-import '../../screens/login/forgot_password_screen.dart';
+import '../../screens/auth/forgot_password_screen.dart';
 
 class LoginWidget extends StatefulWidget {
   final VoidCallback onClickedSignUp;

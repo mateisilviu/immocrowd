@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../screens/login/login_screen.dart';
-import '../../../screens/login/signup_screen.dart';
+import '../../../../core/routes/navigator.dart';
+import '../../../screens/auth/login_screen.dart';
+import '../../../screens/auth/signup_screen.dart';
 
 List<Widget> createLoginSignInButtons(BuildContext context) {
   return [
@@ -11,14 +13,14 @@ List<Widget> createLoginSignInButtons(BuildContext context) {
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.black)),
           onPressed: () =>
-              {Navigator.of(context).pushNamed(LoginScreen.routeName)},
+              {NavigatorService(context).pushNamed(LoginScreen.routeName)},
           child: Text('Login')),
     ),
     Padding(
       padding: const EdgeInsets.all(8.0),
       child: ElevatedButton(
           onPressed: () =>
-              {Navigator.of(context).pushNamed(SignUpScreen.routeName)},
+              {NavigatorService(context).pushNamed(SignUpScreen.routeName)},
           child: Text('Sign up')),
     )
   ];

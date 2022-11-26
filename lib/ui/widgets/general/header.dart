@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'dart:html' as html;
 
+import '../../../core/routes/navigator.dart';
 import '../../../core/util/app-constants.dart';
 import '../../../core/util/design-constants.dart';
 import '../../../core/util/responsive.dart';
@@ -69,7 +70,9 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                                 onTap: () => {
                                   // Navigator.of(context).pushReplacementNamed(
                                   //     ViewPropertiesScreen.routeName)
-                                  context.go(ViewPropertiesScreen.routeName)
+                                  NavigatorService(context)
+                                      .pushReplacementNamed(
+                                          ViewPropertiesScreen.routeName)
                                 },
                                 child: Text(
                                   'Properties',
@@ -97,8 +100,9 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                               padding: const EdgeInsets.all(8.0),
                               child: InkWell(
                                 onTap: () => {
-                                  Navigator.of(context).pushReplacementNamed(
-                                      HowToScreen.routeName)
+                                  NavigatorService(context)
+                                      .pushReplacementNamed(
+                                          HowToScreen.routeName)
                                 },
                                 child: Text(
                                   'How it works',
@@ -111,7 +115,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                               padding: const EdgeInsets.all(8.0),
                               child: InkWell(
                                 onTap: () => {
-                                  Navigator.of(context)
+                                  NavigatorService(context)
                                       .pushReplacementNamed(FaqScreen.routeName)
                                 },
                                 child: Text(
@@ -166,7 +170,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                 switch (item) {
                   case Menu.dashboard:
                     {
-                      Navigator.of(context)
+                      NavigatorService(context)
                           .pushReplacementNamed(DashboardScreen.routeName);
                       break;
                     }

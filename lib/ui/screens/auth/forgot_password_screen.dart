@@ -2,6 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/routes/navigator.dart';
 import '../../../core/util/showSnackbar.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
@@ -82,12 +83,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           .sendPasswordResetEmail(email: emailController.text.trim());
 
       showSnackBar(context, 'Password Reset Email Sent');
-      Navigator.of(context).popUntil((route) => route.isFirst);
+      NavigatorService(context).popUntil((route) => route.isFirst);
     } on FirebaseAuthException catch (e) {
       print(e);
 
       showSnackBar(context, e.message);
-      Navigator.of(context).pop();
+      NavigatorService(context).pop();
     }
   }
 }

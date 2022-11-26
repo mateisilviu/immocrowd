@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import '../../../core/services/firebase_auth_methods.dart';
+import '../../../core/routes/navigator.dart';
 import '../../../core/util/showSnackbar.dart';
 import '../../widgets/general/footer/footer.dart';
 import '../../widgets/general/header.dart';
@@ -12,6 +14,11 @@ import 'login_screen.dart';
 
 class VerifyEmailScreen extends StatefulWidget {
   static const String routeName = '/verify-email';
+
+  VerifyEmailScreen([oobCode]);
+
+  late String oobCode;
+
   @override
   _VerifyEmailScreenState createState() => _VerifyEmailScreenState();
 }
@@ -50,6 +57,11 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   }
 
   Future checkEmailVerified() async {
+    if (widget.oobCode != null) {
+      isEmailVerified = await FirebaseAuthMethods(FirebaseAuth.instance)
+          .validateEmail(widget.oobCode);
+    }
+
     // call after email verification!
     await FirebaseAuth.instance.currentUser!.reload();
 
@@ -78,15 +90,12 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
     var currentUser = FirebaseAuth.instance.currentUser;
     return Scaffold(
       appBar: HeaderWidget(),
-      body: currentUser == null
-          ? _buildCenterText(context, 'You are not logged in, please ',
-              'Log in', LoginScreen.routeName)
-          : isEmailVerified
-              ? _buildCenterText(
-                  context,
-                  'Thank you! Your are email is verified.',
-                  'Browse active oportunities ',
-                  ViewPropertiesScreen.routeName)
+      body: isEmailVerified
+          ? _buildCenterText(context, 'Thank you! Your are email is verified.',
+              'Browse active oportunities ', ViewPropertiesScreen.routeName)
+          : currentUser == null
+              ? _buildCenterText(context, 'You are not logged in, please ',
+                  'Log in', LoginScreen.routeName)
               : Padding(
                   padding: EdgeInsets.all(16),
                   child: Column(
@@ -142,7 +151,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
             TextSpan(
               recognizer: TapGestureRecognizer()
                 ..onTap = () =>
-                    {Navigator.of(context).pushReplacementNamed(routeName)},
+                    {NavigatorService(context).pushReplacementNamed(routeName)},
               text: text2,
               style: TextStyle(
                 decoration: TextDecoration.underline,

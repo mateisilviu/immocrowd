@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../../core/routes/navigator.dart';
 import '../../widgets/general/header.dart';
 import '../view_properties.dart';
 
@@ -82,7 +83,7 @@ class _HowToScreenState extends State<HowToScreen> {
                   style: TextStyle(fontSize: 24),
                 ),
                 onPressed: () async {
-                  Navigator.of(context)
+                  NavigatorService(context)
                       .pushReplacementNamed(ViewPropertiesScreen.routeName);
                 },
               )

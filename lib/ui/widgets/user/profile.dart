@@ -4,11 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../../core/routes/navigator.dart';
 import '../../../core/util/app-constants.dart';
 import '../../../core/util/responsive.dart';
 import '../../../core/util/showSnackbar.dart';
-import '../../screens/login/auth_screen.dart';
-import '../../screens/login/verify_email_screen.dart';
+import '../../screens/auth/auth_screen.dart';
+import '../../screens/auth/verify_email_screen.dart';
 import 'app_drawer.dart';
 
 //import '../../../auth.dart';
@@ -105,7 +106,8 @@ class _ProfilePageState extends State<ProfilePage> {
     return user == null
         ? TextButton(
             onPressed: () => {
-              Navigator.of(context).pushReplacementNamed(AuthScreen.routeName)
+              NavigatorService(context)
+                  .pushReplacementNamed(AuthScreen.routeName)
             },
             child: const Text('Please sign in or register.'),
           )
@@ -246,14 +248,14 @@ class _ProfilePageState extends State<ProfilePage> {
           actions: [
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                NavigatorService(context).pop();
               },
               child: const Text('Update'),
             ),
             OutlinedButton(
               onPressed: () {
                 photoURL = null;
-                Navigator.of(context).pop();
+                NavigatorService(context).pop();
               },
               child: const Text('Cancel'),
             ),
@@ -279,6 +281,6 @@ class _ProfilePageState extends State<ProfilePage> {
   Future<void> _signOut() async {
     await FirebaseAuth.instance.signOut();
     //await GoogleSignIn().signOut();
-    Navigator.of(context).pushReplacementNamed("/");
+    NavigatorService(context).pushReplacementNamed("/");
   }
 }

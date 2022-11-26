@@ -2,10 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../core/routes/navigator.dart';
 import '../../../core/util/showSnackbar.dart';
 import '../../../main.dart';
-import '../../screens/login/forgot_password_screen.dart';
+import 'forgot_password_screen.dart';
 import '../../widgets/general/footer/footer.dart';
 import '../../widgets/general/header.dart';
 import '../view_properties.dart';
@@ -33,9 +35,9 @@ class _LoginScreenState extends State<LoginScreen> {
       var user = FirebaseAuth.instance.currentUser;
       if (user != null) {
         if (user.emailVerified)
-          Navigator.of(context).pushNamed(ViewPropertiesScreen.routeName);
+          NavigatorService(context).pushNamed(ViewPropertiesScreen.routeName);
         else
-          Navigator.of(context).pushNamed(VerifyEmailScreen.routeName);
+          NavigatorService(context).pushNamed(VerifyEmailScreen.routeName);
       }
     });
   }
@@ -109,7 +111,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontSize: 20,
                         ),
                       ),
-                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      onTap: () =>
+                          NavigatorService(context).push(MaterialPageRoute(
                         builder: (context) => ForgotPasswordScreen(),
                       )),
                     ),
@@ -122,8 +125,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           TextSpan(
                             recognizer: TapGestureRecognizer()
                               ..onTap = () => {
-                                    Navigator.of(context).pushReplacementNamed(
-                                        SignUpScreen.routeName)
+                                    NavigatorService(context)
+                                        .pushReplacementNamed(
+                                            SignUpScreen.routeName)
                                   },
                             text: 'Sign Up',
                             style: TextStyle(

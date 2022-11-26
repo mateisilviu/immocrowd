@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/models/property.dart';
+import '../../../core/routes/navigator.dart';
 import '../../../core/util/responsive.dart';
 import '../../screens/property_detail_screen.dart';
 import '../../screens/property_details_screen.dart';
@@ -145,7 +146,7 @@ class PropertyItem extends StatelessWidget {
                                                     'email': emailController
                                                         .value.text
                                                   }),
-                                                  Navigator.of(ctx).pop()
+                                                  NavigatorService(ctx).pop()
                                                 },
                                             child: const Text(
                                                 'Email me when this is ready.'))),
@@ -166,7 +167,8 @@ class PropertyItem extends StatelessWidget {
                           // Navigator.pushNamed(
                           //     context, PropertyDetailsScreen.routeName,
                           //     arguments: item)
-                          context.go(PropertyDetailsScreen.fullPath + item.id)
+                          NavigatorService(context).pushNamed(
+                              PropertyDetailsScreen.fullPath + item.id)
                         },
                     child: const Text('Details'))),
 

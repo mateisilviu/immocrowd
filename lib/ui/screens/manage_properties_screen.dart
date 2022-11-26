@@ -18,8 +18,9 @@ import 'package:firebase_storage/firebase_storage.dart';
 
 import '../../core/models/property.dart';
 import '../../core/providers/properties-provider.dart';
+import '../../core/routes/navigator.dart';
 import '../widgets/user/app_drawer.dart';
-import 'login/auth_screen.dart';
+import 'auth/auth_screen.dart';
 
 class ManagePropertiesScreen extends StatefulWidget {
   static const routeName = '/manage-properties';
@@ -118,7 +119,7 @@ class _ManagePropertiesScreenState extends State<ManagePropertiesScreen> {
                       price: "0");
                   _imageFileList?.clear();
                 });
-                Navigator.of(ctx).pop();
+                NavigatorService(ctx).pop();
               },
             )
           ],
@@ -147,7 +148,7 @@ class _ManagePropertiesScreenState extends State<ManagePropertiesScreen> {
                       price: "0");
                   _imageFileList?.clear();
                 });
-                Navigator.of(ctx).pop();
+                NavigatorService(ctx).pop();
               },
             )
           ],
@@ -349,7 +350,8 @@ class _ManagePropertiesScreenState extends State<ManagePropertiesScreen> {
     return FirebaseAuth.instance.currentUser == null
         ? TextButton(
             onPressed: () => {
-              Navigator.of(context).pushReplacementNamed(AuthScreen.routeName)
+              NavigatorService(context)
+                  .pushReplacementNamed(AuthScreen.routeName)
             },
             child: const Text('Please sign in or register.'),
           )
@@ -582,7 +584,7 @@ class _ManagePropertiesScreenState extends State<ManagePropertiesScreen> {
               TextButton(
                 child: const Text('CANCEL'),
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  NavigatorService(context).pop();
                 },
               ),
               TextButton(
@@ -598,7 +600,7 @@ class _ManagePropertiesScreenState extends State<ManagePropertiesScreen> {
                         ? int.parse(qualityController.text)
                         : null;
                     onPick(width, height, quality);
-                    Navigator.of(context).pop();
+                    NavigatorService(context).pop();
                   }),
             ],
           );

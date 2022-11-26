@@ -1,12 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'dart:html' as html;
 
+import '../../../core/routes/navigator.dart';
 import '../../screens/faq/faq_screen.dart';
 import '../../screens/howto/howto_screen.dart';
-import '../../screens/login/login_screen.dart';
-import '../../screens/login/signup_screen.dart';
+import '../../screens/auth/login_screen.dart';
+import '../../screens/auth/signup_screen.dart';
 import '../../screens/view_properties.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -23,7 +25,7 @@ class AppDrawer extends StatelessWidget {
           UserAccountsDrawerHeader(
               accountName: Text(firebaseUser.displayName ?? ""),
               accountEmail: Text(firebaseUser.email ?? ""),
-              onDetailsPressed: () => Navigator.of(context)
+              onDetailsPressed: () => NavigatorService(context)
                   .pushReplacementNamed(ViewPropertiesScreen.routeName),
               currentAccountPicture: CircleAvatar(
                   radius: 48,
@@ -33,12 +35,12 @@ class AppDrawer extends StatelessWidget {
         else
           ..._buildLoginSingInButtons(context),
         _buildCustomListTile('Home', 'assets/images/drawer/home_100.gif', () {
-          Navigator.of(context).pushReplacementNamed('/');
+          NavigatorService(context).pushReplacementNamed('/');
         }),
         _buildCustomListTile(
             'View Properties', 'assets/images/drawer/view_properties_100.gif',
             () {
-          Navigator.of(context)
+          NavigatorService(context)
               .pushReplacementNamed(ViewPropertiesScreen.routeName);
         }),
         _buildCustomListTile(
@@ -51,14 +53,14 @@ class AppDrawer extends StatelessWidget {
             'How it works',
             'assets/images/drawer/how_it_works_100.gif',
             () => {
-                  Navigator.of(context)
+                  NavigatorService(context)
                       .pushReplacementNamed(HowToScreen.routeName)
                 }),
         _buildCustomListTile(
             'FAQ',
             'assets/images/drawer/faq_100.gif',
             () => {
-                  Navigator.of(context)
+                  NavigatorService(context)
                       .pushReplacementNamed(FaqScreen.routeName)
                 }),
         _buildCustomListTile(
@@ -101,11 +103,11 @@ class AppDrawer extends StatelessWidget {
   List<Widget> _buildLoginSingInButtons(BuildContext context) {
     return [
       _buildCustomListTile('Login', 'assets/images/drawer/login_100.gif', () {
-        Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
+        NavigatorService(context).pushReplacementNamed(LoginScreen.routeName);
       }),
       _buildCustomListTile('Sign Up', 'assets/images/drawer/signup_100.gif',
           () {
-        Navigator.of(context).pushReplacementNamed(SignUpScreen.routeName);
+        NavigatorService(context).pushReplacementNamed(SignUpScreen.routeName);
       })
     ];
   }

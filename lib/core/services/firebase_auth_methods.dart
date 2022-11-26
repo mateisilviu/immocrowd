@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../routes/navigator.dart';
 import '../util/showOtpDialog.dart';
 import '../util/showSnackbar.dart';
 
@@ -167,7 +168,7 @@ class FirebaseAuthMethods {
           );
 
           await _auth.signInWithCredential(credential);
-          Navigator.of(context).pop(); // Remove the dialog box
+          NavigatorService(context).pop(); // Remove the dialog box
         },
       );
     } else {
@@ -196,7 +197,7 @@ class FirebaseAuthMethods {
 
               // !!! Works only on Android, iOS !!!
               await _auth.signInWithCredential(credential);
-              Navigator.of(context).pop(); // Remove the dialog box
+              NavigatorService(context).pop(); // Remove the dialog box
             },
           );
         }),
@@ -224,6 +225,20 @@ class FirebaseAuthMethods {
       showSnackBar(context, e.message!); // Displaying the error message
       // if an error of requires-recent-login is thrown, make sure to log
       // in user again and then delete account.
+    }
+  }
+
+  Future<bool> validateEmail(String oobCode) async {
+    try {
+      await _auth.checkActionCode(oobCode);
+      await _auth.applyActionCode(oobCode);
+      return true;
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      return false;
+    } catch (e) {
+      print(e);
+      return false;
     }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:html' as html;
 
+import '../../../../core/routes/navigator.dart';
 import '../../../../core/util/design-constants.dart';
 import '../../../../core/util/responsive.dart';
 import '../../../screens/faq/faq_screen.dart';
@@ -96,7 +97,8 @@ class FooterComponent extends StatelessWidget {
           padding: EdgeInsets.all(5),
           child: InkWell(
             onTap: () => {
-              Navigator.of(context).pushReplacementNamed(HowToScreen.routeName)
+              NavigatorService(context)
+                  .pushReplacementNamed(HowToScreen.routeName)
             },
             child: Text(
               'How it works.',
@@ -144,7 +146,7 @@ class FooterComponent extends StatelessWidget {
         padding: EdgeInsets.all(5),
         child: InkWell(
             onTap: () => {
-                  Navigator.of(context)
+                  NavigatorService(context)
                       .pushReplacementNamed(FaqScreen.routeName)
                 },
             child: Text("FAQ")),
